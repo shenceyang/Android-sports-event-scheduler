@@ -1,13 +1,13 @@
 Group Members:
-Chun Kang Lu, Max Rack,
+Chun Kang Lu, Max Rack, Keethan Jeyabalan, Shence Yang, Yuehang Guo, Mustafa Hasan
 
 Method of Communication:
-
+Discord
 
 Daily Standup Time:
-
+8pm EST
 
 Project Version Control:
-
+Github at: https://github.com/shenceyang/cscb07-project-
 
 Misc:
