@@ -9,16 +9,16 @@ Discuss more with group members regarding delegating tasks and start creating ba
 Any impediments or stumbling blocks?
 None so far
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Set up Firebase project and invited group members
 
 What are you planning on doing today?
-	- Put points here ...
+Work with group members to determine who does which user story
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+All good
 
 Name: 
 
