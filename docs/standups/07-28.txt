@@ -20,16 +20,17 @@ Work with group members to determine who does which user story
 Any impediments or stumbling blocks?
 All good
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+Figure out how to use GitHub.
+Getting familiar with project requirements and brainstorming solutions. 
 
 What are you planning on doing today?
-	- Put points here ...
+Figure out how the work will be distributed so that we can get started as soon as possible.
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Nothing as of yet.
 
 Name: 
 
