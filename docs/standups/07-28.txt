@@ -32,16 +32,17 @@ Figure out how the work will be distributed so that we can get started as soon a
 Any impediments or stumbling blocks?
 Nothing as of yet.
 
-Name: 
+Name: Shence Yang
 
 What have you done since yesterday?
-	- Put points here ...
+Set up GitHub account and invite group members
 
 What are you planning on doing today?
-	- Put points here ...
+Discuss each one's role.
+Figure out which design pattern are we using.
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Not yet
 
 Name: 
 
