@@ -9,16 +9,16 @@ More progress on Event and Venue functionality regarding interaction with databa
 Any impediments or stumbling blocks?
 Half the group members could not make it to scrum meeting, group is a bit disorganized.
 
-Name: 
+Name: Max Raxk
 
 What have you done since yesterday?
-	- Put points here ...
+Worked with group to organize what our next steps are
 
 What are you planning on doing today?
-	- Put points here ...
+Work on figuring out how to use Firebase for username/password authentication
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Only half of the group were in the meeting so it was harder to plan 
 
 Name: 
 
