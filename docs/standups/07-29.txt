@@ -1,0 +1,54 @@
+Name: Chun Kang Lu 
+
+What have you done since yesterday?
+Planned out sprint backlog, delegated tasks to 3 group members, started on backend Event and Venue classes.
+
+What are you planning on doing today?
+More progress on Event and Venue functionality regarding interaction with database.
+
+Any impediments or stumbling blocks?
+Half the group members could not make it to scrum meeting, group is a bit disorganized.
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
