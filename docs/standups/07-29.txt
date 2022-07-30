@@ -20,16 +20,16 @@ Work on figuring out how to use Firebase for username/password authentication
 Any impediments or stumbling blocks?
 Only half of the group were in the meeting so it was harder to plan 
 
-Name: 
+Name: Mustafa Hasan
 
 What have you done since yesterday?
-	- Put points here ...
+Reviewed app outlines and template presented by other team members
 
 What are you planning on doing today?
-	- Put points here ...
+Start implementing the template on Android Studio
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Wasn't able to make it to group meeting because of work. Will try to find ways around that.
 
 Name: 
 
