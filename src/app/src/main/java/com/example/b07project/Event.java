@@ -19,6 +19,8 @@ public class Event {
     int endMin;
     int venueID;
 
+    public Event() {}
+
     public Event(int maxPlayers, int day, int month, int year, int startHour, int startMin, int endHour, int endMin, int venueID) {
         this.eventID = nextEventID;
         nextEventID++;
@@ -34,16 +36,9 @@ public class Event {
         totalEvents++;
     }
 
-
-
-
-    // TODO
+    // TODO add other logic for "valid" events
     public boolean isValidTime(int startHour, int startMin, int endHour, int endMin) {
         return false;
-    }
-
-    public boolean playersCanJoin() {
-        return this.currPlayers < this.maxPlayers;
     }
 
     // ********** GETTERS **********

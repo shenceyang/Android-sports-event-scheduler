@@ -1,5 +1,7 @@
 package com.example.b07project;
 
+import com.google.firebase.database.Exclude;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +12,10 @@ public class Venue {
 
     int venueID;
     String venueName;
-    List<Event> events = new ArrayList<Event>();
+    List<Event> events = new ArrayList<Event>(); // By eventID
     List<String> availableSports;
+
+    public Venue() {}
 
     // For creating new Venues
     public Venue(String venueName, ArrayList<String> availableSports) {
@@ -20,13 +24,6 @@ public class Venue {
         this.venueName = venueName;
         this.availableSports = availableSports;
         totalVenues++;
-    }
-
-    // For pulling existing venues from DB and creating object
-    public Venue(int venueID, String venueName, ArrayList<String> availableSports) {
-        this.venueID = venueID;
-        this.venueName = venueName;
-        this.availableSports = availableSports;
     }
 
     public void addEvent(Event event) {
@@ -42,10 +39,12 @@ public class Venue {
         return venueName;
     }
 
+    @Exclude
     public List<Event> getEvents() {
         return events;
     }
 
+    @Exclude
     public List<String> getAvailableSports() {
         return availableSports;
     }
