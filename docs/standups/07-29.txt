@@ -42,13 +42,15 @@ Getting started on the task that I am going to be delegated to so that we can ma
 Any impediments or stumbling blocks?
 Still having a rough time getting things started and formally assigning parts to everyone so that we can all get started.
 
-Name: 
+Name: Shence Yang
 
 What have you done since yesterday?
-	- Put points here ...
+Planed out the structure of user stories
+Join the meeting to organize what we do next
 
 What are you planning on doing today?
-	- Put points here ...
+Implement backend 
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Only half of the group were in the meeting so we only made a rough plan
+
