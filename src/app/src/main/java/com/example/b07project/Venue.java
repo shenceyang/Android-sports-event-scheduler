@@ -1,5 +1,6 @@
 package com.example.b07project;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +13,20 @@ public class Venue {
     List<Event> events = new ArrayList<Event>();
     List<String> availableSports;
 
+    // For creating new Venues
     public Venue(String venueName, ArrayList<String> availableSports) {
         this.venueID = nextVenueID;
         nextVenueID++;
         this.venueName = venueName;
         this.availableSports = availableSports;
         totalVenues++;
+    }
+
+    // For pulling existing venues from DB and creating object
+    public Venue(int venueID, String venueName, ArrayList<String> availableSports) {
+        this.venueID = venueID;
+        this.venueName = venueName;
+        this.availableSports = availableSports;
     }
 
     public void addEvent(Event event) {
