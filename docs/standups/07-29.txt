@@ -31,16 +31,16 @@ Start implementing the template on Android Studio
 Any impediments or stumbling blocks?
 Wasn't able to make it to group meeting because of work. Will try to find ways around that.
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+Experimented with Android Studio to develop an idea of how to create solutions for each task.
 
 What are you planning on doing today?
-	- Put points here ...
+Getting started on the task that I am going to be delegated to so that we can make some progress.
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Still having a rough time getting things started and formally assigning parts to everyone so that we can all get started.
 
 Name: 
 
