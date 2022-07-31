@@ -42,13 +42,13 @@ Working onto next step (backend)
 Any impediments or stumbling blocks?
 One group member didn't show up on the meeting
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Researched and set up Firebase for email/passowrd authentication
 
 What are you planning on doing today?
-	- Put points here ...
+Begin work on user story 6
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Haven't been able to contact a group member and having to split working time on another class assignment
