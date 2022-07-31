@@ -78,29 +78,12 @@ public class VenuePresenter {
     }
 
     // TODO add needed queries for getting venue info from database (name, availableSports) maybe also query for all events in this venue?
-    public void getName(int venueID, VenueView venueView) {
+    public void getVenue(int venueID, VenueCallback venueCallback) {
         this.database.child("venues").child(String.valueOf(venueID)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot venue) {
-                String name = venue.child("venueName").getValue(String.class);
-                venueView.getNameCallback(name);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
-
-    public void getAvailableSports(int venueID, VenueView venueView) {
-        this.database.child("venues").child(String.valueOf(venueID)).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot venue) {
-                List<String> availableSports = new ArrayList<String>();
-                for(DataSnapshot sport: venue.child("availableSports").getChildren()) {
-                    availableSports.add(sport.getValue(String.class));
-                }
-                venueView.getAvailableSportsCallback(availableSports);
+                Venue v = venue.getValue(Venue.class);
+                venueCallback.getVenueCallback(v);
             }
 
             @Override

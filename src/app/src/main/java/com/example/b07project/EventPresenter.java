@@ -74,5 +74,17 @@ public class EventPresenter {
     // TODO functionality to modify event data in database?
 
     // TODO add needed queries for getting event info from database
+    public void getEvent(int eventID, EventCallback eventCallback) {
+        this.database.child("allEvents").child(String.valueOf(eventID)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot event) {
+                Event e = event.getValue(Event.class);
+                eventCallback.getEventCallback(e);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
 }
