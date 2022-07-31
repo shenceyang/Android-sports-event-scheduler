@@ -20,16 +20,16 @@ What are you planning on doing today?
 Any impediments or stumbling blocks?
 - One team member is MIA 
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+Finally got assigned a user story.
 
 What are you planning on doing today?
-	- Put points here ...
+Will begin to plan and implement user story with partner Mustafa.
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+One absent group partner makes things hard to organize.
 
 Name: 
 
