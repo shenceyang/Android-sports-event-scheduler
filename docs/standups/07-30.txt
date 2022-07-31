@@ -31,16 +31,16 @@ Will begin to plan and implement user story with partner Mustafa.
 Any impediments or stumbling blocks?
 One absent group partner makes things hard to organize.
 
-Name: 
+Name: Shence Yang
 
 What have you done since yesterday?
-	- Put points here ...
+Set up the backend database
 
 What are you planning on doing today?
-	- Put points here ...
+Working onto next step (backend)
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+One group member didn't show up on the meeting
 
 Name: 
 
