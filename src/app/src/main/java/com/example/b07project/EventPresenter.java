@@ -63,6 +63,12 @@ public class EventPresenter {
                 });
     }
 
+    public void addPlayer(int eventID) {
+        this.database.child("allEvents")
+                .child(String.valueOf(eventID))
+                // TODO finish
+    }
+
 //    // TODO: add function to grab from database and create event object
 //    public void pullEvent(int eventID) {
 //
