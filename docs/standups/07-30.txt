@@ -9,16 +9,16 @@ More methods for modifying events in database as well as starting on UI elements
 Any impediments or stumbling blocks?
 Github and merge conflict problems
 
-Name: 
+Name: Mustafa Hasan
 
 What have you done since yesterday?
-	- Put points here ...
+- Got assigned to a user story
 
 What are you planning on doing today?
-	- Put points here ...
+- Start implementing my assigned user story with Keethan
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+- One team member is MIA 
 
 Name: 
 
