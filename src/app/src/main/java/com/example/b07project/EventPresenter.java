@@ -8,6 +8,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 public class EventPresenter {
@@ -66,11 +67,12 @@ public class EventPresenter {
     public void addPlayer(int eventID) {
         this.database.child("allEvents")
                 .child(String.valueOf(eventID))
-                // TODO finish
+                .child("currPlayers")
+                .setValue(ServerValue.increment(1));
     }
 
-//    // TODO: add function to grab from database and create event object
-//    public void pullEvent(int eventID) {
-//
-//    }
+    // TODO functionality to modify event data in database?
+
+    // TODO add needed queries for getting event info from database
+
 }

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         eventPresenter.pushEvent(e2);
 
 //        eventPresenter.removeEvent(e2.getEventID());
-        venuePresenter.removeVenue(v.getVenueID());
+//        venuePresenter.removeVenue(v.getVenueID());
 
 
 //        venuePresenter.pullVenue(v.getVenueID());

@@ -11,6 +11,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class VenuePresenter {
     private VenueView venueView;
     private DatabaseReference database;
@@ -70,66 +73,40 @@ public class VenuePresenter {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
     }
 
+    // TODO add needed queries for getting venue info from database (name, availableSports) maybe also query for all events in this venue?
+    public void getName(int venueID, VenueView venueView) {
+        this.database.child("venues").child(String.valueOf(venueID)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot venue) {
+                String name = venue.child("venueName").getValue(String.class);
+                venueView.getNameCallback(name);
+            }
 
-//    // TODO: add function to grab from database and create venue object
-//    public void pullVenueFromDB(int venueID, VenueCallback venueCallback) {
-//        this.database.child("venues").child(String.valueOf(venueID)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                if (!task.isSuccessful()) {
-//                    Log.e("firebase", "Error getting data", task.getException());
-//                }
-//                else {
-////                    Log.d("thingy", String.valueOf(task.getResult().getValue(Venue.class).getVenueName()));
-//
-//                    venueCallback.setVenue(task.getResult().getValue(Venue.class));
-//
-////                    vP.setPulledVenue(task.getResult().getValue(Venue.class));
-////                    Log.d("thingy", vP.getPulledVenue().getVenueName());
-////                    Log.d("thingy", pulledVenue.getVenueName());
-////                    pulledVenue = task.getResult().getValue(Venue.class);
-////                    Log.d("firebase", String.valueOf(pulledVenue.getVenueName()));
-////                    setPulledVenue(task.getResult().getValue(Venue.class));
-//                }
-//            }
-//        });
-////        Log.d("venue", String.valueOf(venueID));
-////        this.database.child("venues").child(String.valueOf(venueID)).addValueEventListener(new ValueEventListener() {
-////            @Override
-////            public void onDataChange(@NonNull DataSnapshot snapshot) {
-////                setPulledVenue(snapshot.getValue(Venue.class));
-//////                Log.d("venue", pulledVenue.getVenueName());
-////            }
-////
-////            @Override
-////            public void onCancelled(@NonNull DatabaseError error) {
-////                Log.d("firebase", error.toString());
-////            }
-////        });
-//    }
-//
-//    public void pullVenue(int venueID)  {
-//        this.pullVenueFromDB(venueID, new VenueCallback() {
-//            @Override
-//            public void setVenue(Venue venue) {
-//
-//                pulledVenue = venue;
-//                Log.d("thingy", pulledVenue.getVenueName());
-//            }
-//        });
-////        Log.d("thingy", this.getPulledVenue().getVenueName());
-//    }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
 
-//    public Venue getPulledVenue() {
-//        return pulledVenue;
-//    }
-//
-//    public void setPulledVenue(Venue pulledVenue) {
-//        this.pulledVenue = pulledVenue;
-//    }
+    public void getAvailableSports(int venueID, VenueView venueView) {
+        this.database.child("venues").child(String.valueOf(venueID)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot venue) {
+                List<String> availableSports = new ArrayList<String>();
+                for(DataSnapshot sport: venue.child("availableSports").getChildren()) {
+                    availableSports.add(sport.getValue(String.class));
+                }
+                venueView.getAvailableSportsCallback(availableSports);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
 }
