@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
         adminPresenter.pushAdmin(a);
 
         eventPresenter.pushEvent(e2);
+
+//        eventPresenter.getSortedListEvents(new EventCallback.GetSortedListEventsCallback() {
+//            @Override
+//            public void getSortedListEventsCallback(List<Event> sortedEvents) {
+//                    // Update UI stuff
+//            }
+//        });
 
 //        eventPresenter.removeEvent(e2.getEventID());
 //        venuePresenter.removeVenue(v.getVenueID());
