@@ -8,5 +8,11 @@
     <string name="venue_sport_prompt">Sport</string>
     <string name="add_sport_button">ADD</string>
 
+    <string name="event_venue">Venue: </string>
+    <string name="event_date">Date: </string>
+    <string name="event_start_time">Start: </string>
+    <string name="event_end_time">End: </string>
+    <string name="event_sport">Sport: </string>
+
 
 </resources>

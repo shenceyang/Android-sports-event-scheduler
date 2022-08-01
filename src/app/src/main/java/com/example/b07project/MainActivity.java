@@ -2,6 +2,7 @@ package com.example.b07project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -59,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         adminPresenter.pushAdmin(a);
 
         eventPresenter.pushEvent(e2);
+
+        Intent intent = new Intent(this, EventView.class);
+        startActivity(intent);
 
 //        eventPresenter.getSortedListEvents(new EventCallback.GetSortedListEventsCallback() {
 //            @Override
