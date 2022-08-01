@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         arr.add("basketball");
         Venue v = new Venue("testVenue", arr);
 
-        Event e = new Event(4, 13, 12, 2022, 7, 0, 9, 0, 1);
+        Event e = new Event(4, 11, 12, 2022, 7, 0, 9, 0, "basketball", v.getVenueID());
 
         Customer c = new Customer("shence","123123");
         Customer c2 = new Customer("kang","123123");
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         Admin a = new Admin("sb","123");
 
 
-        Event e1 = new Event(4, 13, 12, 2022, 7, 0, 9, 0, v.getVenueID());
-        Event e2 = new Event(8, 10, 8, 2022, 7, 0, 9, 0, v.getVenueID());
+        Event e1 = new Event(4, 13, 12, 2022, 7, 0, 9, 0, "basketball", v.getVenueID());
+        Event e2 = new Event(8, 10, 8, 2022, 7, 0, 9, 0, "basketball", v.getVenueID());
         v.addEvent(e1);
 
         DatabaseReference d = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
