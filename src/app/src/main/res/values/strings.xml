@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">B07Project</string>
+    <string name="submit_button">SUBMIT</string>
+    <string name="add_venue_info">Add Venue and Available Sports</string>
+    <string name="venue_name_info">Write venue name</string>
+    <string name="venue_name_prompt">Venue</string>
+    <string name="venue_sport_info">Write a sport, then press ADD.\nRepeat for each available sport</string>
+    <string name="venue_sport_prompt">Sport</string>
+    <string name="add_sport_button">ADD</string>
+
+
 </resources>
