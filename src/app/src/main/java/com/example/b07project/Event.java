@@ -36,6 +36,7 @@ public class Event {
         this.startMin = startMin;
         this.endHour = endHour;
         this.endMin = endMin;
+        this.sport = sport;
         this.venueID = venueID;
         totalEvents++;
         String sortKeyStr = String.valueOf(year) + String.format("%02d", month) + String.format("%02d", day) + String.format("%02d", startHour) + String.format("%02d", startMin);

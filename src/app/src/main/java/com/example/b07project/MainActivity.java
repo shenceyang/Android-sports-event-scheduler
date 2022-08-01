@@ -2,6 +2,7 @@ package com.example.b07project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference d = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
         VenuePresenter venuePresenter = new VenuePresenter(new VenueView(), d);
-        EventPresenter eventPresenter = new EventPresenter(new EventView(), d);
+        EventView eventView = new EventView();
+        EventPresenter eventPresenter = new EventPresenter(eventView, d);
 
         CustomerPresenter customerPresenter = new CustomerPresenter(new CustomerView(), d);
         SchedulePresenter schedulePresenter = new SchedulePresenter(new ScheduleView(),d);
@@ -58,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         adminPresenter.pushAdmin(a);
 
         eventPresenter.pushEvent(e2);
+
+        Intent intent = new Intent(this, EventView.class);
+        startActivity(intent);
 
 //        eventPresenter.getSortedListEvents(new EventCallback.GetSortedListEventsCallback() {
 //            @Override
