@@ -11,6 +11,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EventPresenter {
     private EventView eventView;
     private DatabaseReference database;
@@ -74,12 +77,31 @@ public class EventPresenter {
     // TODO functionality to modify event data in database?
 
     // TODO add needed queries for getting event info from database
-    public void getEvent(int eventID, EventCallback eventCallback) {
+    public void getEvent(int eventID, EventCallback.GetEventCallback eventCallback) {
         this.database.child("allEvents").child(String.valueOf(eventID)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot event) {
                 Event e = event.getValue(Event.class);
                 eventCallback.getEventCallback(e);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public void getSortedListEvents(EventCallback.GetSortedListEventsCallback eventCallback) {
+        List<Event> sortedEvents = new ArrayList<Event>();
+        this.database.child("allEvents").orderByChild("sortKey").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sortedEvents.clear();
+                for(DataSnapshot event: snapshot.getChildren()) {
+                    Event toAdd = event.getValue(Event.class);
+                    sortedEvents.add(toAdd);
+                }
+                eventCallback.getSortedListEventsCallback(sortedEvents);
             }
 
             @Override

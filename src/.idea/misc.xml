@@ -4,8 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Kang/Documents/School/CSCB07/Project/SportsEventsScheduler/src/app/src/main/res/layout/activity_main.xml" value="0.264" />
+<<<<<<< HEAD
         <entry key="..\:/Users/Max/AndroidStudioProjects/CSCB07 Project/src/app/src/main/res/layout/activity_main.xml" value="0.6" />
         <entry key="..\:/Users/Max/AndroidStudioProjects/CSCB07 Project/src/app/src/main/res/layout/add_venue.xml" value="0.5536458333333333" />
+=======
+        <entry key="..\:/Users/Kang/Documents/School/CSCB07/Project/SportsEventsScheduler/src/app/src/main/res/layout/my_layout.xml" value="0.22604166666666667" />
+        <entry key="..\:/Users/Kang/Documents/School/CSCB07/Project/SportsEventsScheduler/src/app/src/main/res/layout/upcoming_events.xml" value="0.16145833333333334" />
+>>>>>>> 657b4427e980f38c6b78c8fdd72b3a3aef30d603
       </map>
     </option>
   </component>
