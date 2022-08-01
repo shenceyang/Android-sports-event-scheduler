@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference d = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
         VenuePresenter venuePresenter = new VenuePresenter(new VenueView(), d);
-        EventPresenter eventPresenter = new EventPresenter(new EventView(), d);
+        EventView eventView = new EventView();
+        EventPresenter eventPresenter = new EventPresenter(eventView, d);
 
         CustomerPresenter customerPresenter = new CustomerPresenter(new CustomerView(), d);
         SchedulePresenter schedulePresenter = new SchedulePresenter(new ScheduleView(),d);
