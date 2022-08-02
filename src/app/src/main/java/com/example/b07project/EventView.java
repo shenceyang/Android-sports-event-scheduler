@@ -3,6 +3,7 @@ package com.example.b07project;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import java.util.List;
 public class EventView extends AppCompatActivity {
     private EventPresenter eventPresenter;
     private VenuePresenter venuePresenter;
+    private SchedulePresenter schedulePresenter;
     private DatabaseReference database = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
 
     private void addUpcomingEvents() {
@@ -30,6 +32,11 @@ public class EventView extends AppCompatActivity {
 
                     TextView venueText = (TextView) newEvent.findViewById(R.id.eventVenue);
                     TextView dateText = (TextView) newEvent.findViewById(R.id.eventDate);
+                    TextView sportText = (TextView) newEvent.findViewById(R.id.eventSport);
+                    TextView startText = (TextView) newEvent.findViewById(R.id.eventStartTime);
+                    TextView endText = (TextView) newEvent.findViewById(R.id.eventEndTime);
+                    Button joinButton = (Button) newEvent.findViewById(R.id.joinButton);
+
                     venuePresenter.getVenue(e.getVenueID(), new VenueCallback() {
                         @Override
                         public void getVenueCallback(Venue venue) {
@@ -40,8 +47,20 @@ public class EventView extends AppCompatActivity {
                         @Override
                         public void getEventCallback(Event event) {
                             dateText.setText("Date: " + event.getDay() + "/" + event.getMonth() + "/" + event.getYear());
+                            sportText.setText("Sport: " + event.getSport());
+                            startText.setText("Start: " + event.getStartHour() + ":" + String.format("%02d", event.getStartMin()));
+                            endText.setText("End: " + event.getEndHour() + ":" + String.format("%02d", event.getEndMin()));
+
+//                            joinButton.setOnClickListener(new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View view) {
+//                                    Schedule s = new Schedule(event.getEventID(), customerID, venueID) // TODO change
+//                                }
+//                            });
                         }
                     });
+
+
 
                     eventList.addView(newEvent);
                 }
@@ -56,6 +75,7 @@ public class EventView extends AppCompatActivity {
 
         this.eventPresenter = new EventPresenter(this, this.database);
         this.venuePresenter = new VenuePresenter(new VenueView(), this.database); // TODO Change VenueView later
+        this.schedulePresenter = new SchedulePresenter(new ScheduleView(), this.database); // TODO change
         addUpcomingEvents();
     }
 
