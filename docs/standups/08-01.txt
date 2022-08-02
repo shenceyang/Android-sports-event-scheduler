@@ -31,16 +31,16 @@ Design login page UI
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Greated UI and began code on admin adding events
 
 What are you planning on doing today?
-	- Put points here ...
+Continue work on admin adding events
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Having a problem with buttons
 
 Name: 
 
