@@ -20,16 +20,16 @@ Fully finishing the physical layout
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Shence
 
 What have you done since yesterday?
-	- Put points here ...
+Finalized layout and discuss how to implement add event function
 
 What are you planning on doing today?
-	- Put points here ...
+Design login page UI
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
