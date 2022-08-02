@@ -77,8 +77,8 @@ public class EventView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upcoming_events);
 
-        this.eventPresenter = new EventPresenter(this, this.database);
-        this.venuePresenter = new VenuePresenter(new VenueView(), this.database); // TODO Change VenueView later
+        this.eventPresenter = new EventPresenter(this.database);
+        this.venuePresenter = new VenuePresenter(this.database); // TODO Change VenueView later
         this.schedulePresenter = new SchedulePresenter(new ScheduleView(), this.eventPresenter, this.database); // TODO change
         addUpcomingEvents();
     }

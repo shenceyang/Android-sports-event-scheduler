@@ -45,7 +45,7 @@ public class AddVenue extends AppCompatActivity {
                         name = editText2.getText().toString();
                         Venue venue = new Venue(name, sports);
                         DatabaseReference d = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
-                        VenuePresenter venuePresenter = new VenuePresenter(new VenueView(), d);
+                        VenuePresenter venuePresenter = new VenuePresenter(d);
                         venuePresenter.pushVenue(venue);
                         //startActivity(intent);
                     }

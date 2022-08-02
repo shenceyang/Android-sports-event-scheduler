@@ -15,12 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VenuePresenter {
-    private VenueView venueView;
     private DatabaseReference database;
-//    private Venue pulledVenue;
 
-    public VenuePresenter(VenueView venueView, DatabaseReference database) {
-        this.venueView = venueView;
+    public VenuePresenter(DatabaseReference database) {
         this.database = database;
     }
 
