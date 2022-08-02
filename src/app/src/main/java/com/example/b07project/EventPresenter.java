@@ -74,9 +74,18 @@ public class EventPresenter {
                 .setValue(ServerValue.increment(1));
     }
 
+//    // TODO to not allow duplicate events?
+//    public boolean isInDatabase(int eventID) {
+//        return false;
+//    }
+//
+//    // TODO check if sport valid? (BUT COULD JUST ONLY GIVE THE CORRECT OPTIONS)
+//    public boolean isValidSport(int venueID, String sport) {
+//        return false;
+//    }
+
     // TODO functionality to modify event data in database?
 
-    // TODO add needed queries for getting event info from database
     public void getEvent(int eventID, EventCallback.GetEventCallback eventCallback) {
         this.database.child("allEvents").child(String.valueOf(eventID)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

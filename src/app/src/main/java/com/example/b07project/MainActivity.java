@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         EventPresenter eventPresenter = new EventPresenter(eventView, d);
 
         CustomerPresenter customerPresenter = new CustomerPresenter(new CustomerView(), d);
-        SchedulePresenter schedulePresenter = new SchedulePresenter(new ScheduleView(),d);
+        SchedulePresenter schedulePresenter = new SchedulePresenter(new ScheduleView(), eventPresenter, d);
         AdminPresenter adminPresenter = new AdminPresenter(new AdminView(),d);
 
         venuePresenter.pushVenue(v);
