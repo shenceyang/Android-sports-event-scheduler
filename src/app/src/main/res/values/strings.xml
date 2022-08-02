@@ -13,6 +13,8 @@
     <string name="event_start_time">Start: </string>
     <string name="event_end_time">End: </string>
     <string name="event_sport">Sport: </string>
+    <string name="event_joined_players">Players joined: </string>
+    <string name="event_max_players">Max Players: </string>
     <string name="upcoming_events">Upcoming Events</string>
     <string name="join_button">JOIN</string>
 

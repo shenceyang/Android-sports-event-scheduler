@@ -35,6 +35,8 @@ public class EventView extends AppCompatActivity {
                     TextView sportText = (TextView) newEvent.findViewById(R.id.eventSport);
                     TextView startText = (TextView) newEvent.findViewById(R.id.eventStartTime);
                     TextView endText = (TextView) newEvent.findViewById(R.id.eventEndTime);
+                    TextView joinedPlayersText = (TextView) newEvent.findViewById(R.id.eventJoinedPlayers);
+                    TextView maxPlayersText = (TextView) newEvent.findViewById(R.id.eventMaxPlayers);
                     Button joinButton = (Button) newEvent.findViewById(R.id.joinButton);
 
                     venuePresenter.getVenue(e.getVenueID(), new VenueCallback() {
@@ -50,6 +52,8 @@ public class EventView extends AppCompatActivity {
                             sportText.setText("Sport: " + event.getSport());
                             startText.setText("Start: " + event.getStartHour() + ":" + String.format("%02d", event.getStartMin()));
                             endText.setText("End: " + event.getEndHour() + ":" + String.format("%02d", event.getEndMin()));
+                            joinedPlayersText.setText("Players joined: " + event.getCurrPlayers());
+                            maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
 
 //                            joinButton.setOnClickListener(new View.OnClickListener() {
 //                                @Override
@@ -75,7 +79,7 @@ public class EventView extends AppCompatActivity {
 
         this.eventPresenter = new EventPresenter(this, this.database);
         this.venuePresenter = new VenuePresenter(new VenueView(), this.database); // TODO Change VenueView later
-        this.schedulePresenter = new SchedulePresenter(new ScheduleView(), this.database); // TODO change
+        this.schedulePresenter = new SchedulePresenter(new ScheduleView(), this.eventPresenter, this.database); // TODO change
         addUpcomingEvents();
     }
 
