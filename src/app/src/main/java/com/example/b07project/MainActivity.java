@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         Customer c = new Customer("shence","123123");
         Customer c2 = new Customer("kang","123123");
 
-        Schedule s1 = new Schedule("basketball","shence","panam");
-        Schedule s2 = new Schedule("basketball","kang","panam");
+        Schedule s1 = new Schedule(e.getEventID(),"shence",v.getVenueID());
+        Schedule s2 = new Schedule(e.getEventID(),"kang",v.getVenueID());
 
         Admin a = new Admin("sb","123");
 

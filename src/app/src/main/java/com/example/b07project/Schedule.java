@@ -1,19 +1,19 @@
 package com.example.b07project;
 
 public class Schedule {
-    private String eventID;
+    private int eventID;
     private String customerID;
-    private String venueName;
+    private int venueID;
 
-    public Schedule(String eventID, String customerID, String venueName) {
+    public Schedule(int eventID, String customerID, int venueID) {
         this.eventID = eventID;
         this.customerID = customerID;
-        this.venueName = venueName;
+        this.venueID = venueID;
     }
 
 
                 //getters
-    public String getEventID() {
+    public int getEventID() {
         return eventID;
     }
 
@@ -21,13 +21,13 @@ public class Schedule {
         return customerID;
     }
 
-    public String getVenueName() {
-        return venueName;
+    public int getVenueName() {
+        return venueID;
     }
 
 
                      //setters
-    public void setEventID(String eventID) {
+    public void setEventID(int eventID) {
         this.eventID = eventID;
     }
 
@@ -35,7 +35,7 @@ public class Schedule {
         this.customerID = customerID;
     }
 
-    public void setVenueName(String venueName) {
-        this.venueName = venueName;
+    public void setVenueName(int venueID) {
+        this.venueID = venueID;
     }
 }
