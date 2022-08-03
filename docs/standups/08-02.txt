@@ -9,16 +9,16 @@ Continue work on New Event Page hoping to finish it
 Any impediments or stumbling blocks?
 1 Group member constantly not online due to family circumstances, and Android Studio issues
 
-Name: 
+Name: Shence Yang
 
 What have you done since yesterday?
-	- Put points here ...
+Finish login UI page and create account UI page(connect it with firebase)
 
 What are you planning on doing today?
-	- Put points here ...
+Create UI page for customer account 
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+One group member didn't show up and i'm waiting for his code.
 
 Name: 
 
