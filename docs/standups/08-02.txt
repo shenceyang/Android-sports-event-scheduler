@@ -1,0 +1,54 @@
+Name: Chun Kang Lu
+
+What have you done since yesterday?
+Started work on New Event Page, and learning about Date and Time pickers in Android
+
+What are you planning on doing today?
+Continue work on New Event Page hoping to finish it
+
+Any impediments or stumbling blocks?
+1 Group member constantly not online due to family circumstances, and Android Studio issues
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
