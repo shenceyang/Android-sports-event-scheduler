@@ -42,13 +42,13 @@ Finish implementing the features
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Keethan Jeyabaln
 
 What have you done since yesterday?
-	- Put points here ...
+Started implementing design
 
 What are you planning on doing today?
-	- Put points here ...
+Implementing remaining features
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None.
