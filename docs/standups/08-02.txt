@@ -20,16 +20,16 @@ Create UI page for customer account
 Any impediments or stumbling blocks?
 One group member didn't show up and i'm waiting for his code.
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Continued trying to fix button problem, had to shift focus onto new problems
 
 What are you planning on doing today?
-	- Put points here ...
+Fixing problems with android studio and fixing buttons
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Something wrong with android studio. Play button isn't clickable and xml files aren't displaying properly
 
 Name: 
 
