@@ -31,16 +31,16 @@ Fixing problems with android studio and fixing buttons
 Any impediments or stumbling blocks?
 Something wrong with android studio. Play button isn't clickable and xml files aren't displaying properly
 
-Name: 
+Name: Mustafa Hasan	
 
 What have you done since yesterday?
-	- Put points here ...
+Finished full design
 
 What are you planning on doing today?
-	- Put points here ...
+Finish implementing the features
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
