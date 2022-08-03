@@ -5,6 +5,8 @@ package com.example.b07project;
 
 import android.util.Log;
 
+import com.google.firebase.database.Exclude;
+
 public class Event {
     public static int totalEvents = 0;
     public static int nextEventID = 1;
@@ -44,7 +46,8 @@ public class Event {
     }
 
     // TODO add other logic for "valid" events
-    public boolean isValidTime(int startHour, int startMin, int endHour, int endMin) {
+    @Exclude
+    public boolean isValidTime() {
         if(startHour > endHour) return false;
         else if(startHour < endHour) return true;
         else { // if same hour
