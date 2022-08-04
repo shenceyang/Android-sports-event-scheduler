@@ -19,7 +19,8 @@ public class CustomerPresenter {
     public void pushCustomer(Customer c){
         totalNumCustomer++;
         this.database.child("customers")
-                .child("customer"+String.valueOf(totalNumCustomer))
+//                .child("customer"+String.valueOf(totalNumCustomer))
+                .child(c.getUsername())
                 .setValue(c);
     }
 

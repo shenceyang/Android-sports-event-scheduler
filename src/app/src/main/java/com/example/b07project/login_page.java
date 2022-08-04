@@ -30,6 +30,7 @@ public class login_page extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // TODO check if empty and set error (copy from signup_page)
 
                 // Login Authentication
                 if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){

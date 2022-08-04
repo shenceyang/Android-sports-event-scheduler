@@ -28,6 +28,8 @@ public class signup_page extends AppCompatActivity {
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // TODO check if empty and set error
+
                 // Check for existing user with same username
                 // Will show Toast if duplicate
                 signupPresenter.checkDuplicateUser(username.getText().toString(), signup_page.this, new SignupCallback.CheckDuplicateUserCallback() {
