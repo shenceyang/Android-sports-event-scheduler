@@ -25,6 +25,10 @@ public class login_page extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent = new Intent(login_page.this,  Customer_center.class);
+                startActivity(intent);
+                /*authentictaion
                 if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
                     //correct
                     Toast.makeText(login_page.this,"Login successful",Toast.LENGTH_SHORT).show();
@@ -33,6 +37,8 @@ public class login_page extends AppCompatActivity {
                     //incorrect
                     Toast.makeText(login_page.this,"Login failed",Toast.LENGTH_SHORT).show();
                 }
+
+                 */
             }
         });
 
