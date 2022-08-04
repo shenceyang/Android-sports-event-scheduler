@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">B07Project</string>
+    <string name="submit_button">SUBMIT</string>
+    <string name="add_venue_info">Add Venue and Available Sports</string>
+    <string name="venue_name_info">Write venue name</string>
+    <string name="venue_name_prompt">Venue</string>
+    <string name="venue_sport_info">Write a sport, then press ADD.\nRepeat for each available sport</string>
+    <string name="venue_sport_prompt">Sport</string>
+    <string name="add_sport_button">ADD</string>
+    <string name="back_button">BACK</string>
+
+    <string name="event_venue">Venue: </string>
+    <string name="event_date">Date: </string>
+    <string name="event_start_time">Start: </string>
+    <string name="event_end_time">End: </string>
+    <string name="event_sport">Sport: </string>
+    <string name="event_joined_players">Players joined: </string>
+    <string name="event_max_players">Max Players: </string>
+    <string name="upcoming_events">Upcoming Events</string>
+    <string name="join_button">JOIN</string>
+
+    <string name="new_event">New Event</string>
+    <string name="venue_max_players_prompt">Max Players</string>
+    <string name="event_start_time_prompt">Start Time</string>
+    <string name="event_end_time_prompt">End Time</string>
+    <string name="event_date_prompt">Date</string>
+
+
+
+
 </resources>
