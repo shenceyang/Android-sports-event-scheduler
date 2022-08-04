@@ -35,8 +35,8 @@ public class AddVenue extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                //Intent intent = new Intent(this, something.class); // REPLACE something WITH REDIRECTION AFTER SUBMIT AND UNCOMMENT startActivity
-                //startActivity(intent);
+                Intent intent = new Intent(AddVenue.this, Admin_center.class); // REPLACE something WITH REDIRECTION AFTER SUBMIT AND UNCOMMENT startActivity
+                startActivity(intent);
             }
         });
 
