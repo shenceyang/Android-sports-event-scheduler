@@ -20,16 +20,16 @@ Will discuss and connect the UI pages in tomorrow's tutorial
 Any impediments or stumbling blocks?
 Missing one group member, we have no idea what he've been done so far.
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Fixed problems I was having, just need to add back button for the add venue page
 
 What are you planning on doing today?
-	- Put points here ...
+Add a back button and discuss next steps with group
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Missing group member
 
 Name: 
 
