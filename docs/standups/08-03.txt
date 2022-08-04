@@ -31,16 +31,16 @@ Add a back button and discuss next steps with group
 Any impediments or stumbling blocks?
 Missing group member
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+Finished list of Venues
 
 What are you planning on doing today?
-	- Put points here ...
+Figure out how callback functions work
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Struggling to understand how callback functions work
 
 Name: 
 
