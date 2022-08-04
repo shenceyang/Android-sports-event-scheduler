@@ -1,7 +1,7 @@
 package com.example.b07project;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
@@ -24,12 +24,15 @@ public class Customer_center extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
             }
         });
 
         addEventbtn.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Customer_center.this,  NewEvent.class);
+                startActivity(intent);
 
             }
         }));
@@ -38,7 +41,8 @@ public class Customer_center extends AppCompatActivity {
         bookbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(Customer_center.this,  EventView.class);
+                startActivity(intent);
             }
         });
 

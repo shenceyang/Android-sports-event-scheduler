@@ -1,7 +1,7 @@
 package com.example.b07project;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -21,13 +21,17 @@ public class Admin_center extends AppCompatActivity {
         addvenuebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(Admin_center.this,  AddVenue.class);
+                startActivity(intent);
             }
         });
+
 
         Venuelistbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Admin_center.this,  VenueView.class);
+                startActivity(intent);
 
             }
         });
@@ -35,6 +39,8 @@ public class Admin_center extends AppCompatActivity {
         quitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Admin_center.this,  login_page.class);
+                startActivity(intent);
 
             }
         });
