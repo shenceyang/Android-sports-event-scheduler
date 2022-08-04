@@ -42,13 +42,13 @@ Figure out how callback functions work
 Any impediments or stumbling blocks?
 Struggling to understand how callback functions work
 
-Name: 
+Name: Mustafa Hasan
 
 What have you done since yesterday?
-	- Put points here ...
+Finished venue template
 
 What are you planning on doing today?
-	- Put points here ...
+Work on venues
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Had issues with andorid studio not running app (solved now)
