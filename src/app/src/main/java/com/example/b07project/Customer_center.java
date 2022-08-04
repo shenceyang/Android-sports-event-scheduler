@@ -18,6 +18,7 @@ public class Customer_center extends AppCompatActivity {
         MaterialButton schedulebtn = (MaterialButton) findViewById(R.id.schedulebtn);
         MaterialButton bookbtn = (MaterialButton) findViewById(R.id.bookbtn);
         MaterialButton quitbtn = (MaterialButton) findViewById(R.id.quitbtn);
+        MaterialButton addEventbtn = (MaterialButton) findViewById(R.id.addEventbtn);
 
         schedulebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,6 +26,14 @@ public class Customer_center extends AppCompatActivity {
 
             }
         });
+
+        addEventbtn.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        }));
+
 
         bookbtn.setOnClickListener(new View.OnClickListener() {
             @Override

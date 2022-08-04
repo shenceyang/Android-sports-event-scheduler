@@ -10,8 +10,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/service_center"
-        android:text="service center"
+        android:id="@+id/admin_center"
+        android:text="admin center"
         android:textColor="@color/black"
         android:textSize="35dp"
         android:layout_margin="50dp"
@@ -21,45 +21,32 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/bookbtn"
+        android:id="@+id/addvenuebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/service_center"
+        android:layout_below="@id/admin_center"
         android:backgroundTint="@color/purple_200"
-        android:text="upcoming events"
+        android:text="add a venue"
         android:layout_centerHorizontal="true"
         android:layout_margin="30dp"
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/schedulebtn"
+        android:id="@+id/Venuelistbtn"
         android:layout_width="199dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addEventbtn"
+        android:layout_below="@id/addvenuebtn"
         android:layout_centerInParent="true"
         android:layout_marginTop="65dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/purple_200"
-        android:text="see my schedule" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/addEventbtn"
-        android:layout_width="199dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bookbtn"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="65dp"
-        android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/purple_200"
-        android:text="add a event" />
-
-
+        android:text="see venue list" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/quitbtn"
         android:layout_width="wrap_content"
         android:layout_height="67dp"
-        android:layout_below="@id/schedulebtn"
+        android:layout_below="@id/Venuelistbtn"
         android:layout_centerInParent="true"
         android:layout_marginTop="96dp"
         android:layout_marginBottom="30dp"
