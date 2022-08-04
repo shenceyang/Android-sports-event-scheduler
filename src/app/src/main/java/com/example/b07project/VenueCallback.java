@@ -10,4 +10,7 @@ public interface VenueCallback {
     interface SportInAvailableSportsCallback {
         void sportInAvailableSportsCallback();
     }
+    interface EventTimeNotOverlappingCallback {
+        void eventTimeNotOverlappingCallback();
+    }
 }

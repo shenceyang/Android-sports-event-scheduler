@@ -51,9 +51,14 @@ public class Event {
         if(startHour > endHour) return false;
         else if(startHour < endHour) return true;
         else { // if same hour
-            if(startMin > endMin) return false;
+            if(startMin >= endMin) return false;
             else return true;
         }
+    }
+
+    @Exclude
+    public boolean isValidMaxPlayers() {
+        return maxPlayers > 0;
     }
 
     // ********** GETTERS **********
