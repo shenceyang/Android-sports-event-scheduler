@@ -15,11 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventPresenter {
-    private EventView eventView;
     private DatabaseReference database;
 
-    public EventPresenter(EventView eventView, DatabaseReference database) {
-        this.eventView = eventView;
+    public EventPresenter(DatabaseReference database) {
         this.database = database;
     }
 

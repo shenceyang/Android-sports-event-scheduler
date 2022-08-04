@@ -39,7 +39,7 @@ public class EventView extends AppCompatActivity {
                     TextView maxPlayersText = (TextView) newEvent.findViewById(R.id.eventMaxPlayers);
                     Button joinButton = (Button) newEvent.findViewById(R.id.joinButton);
 
-                    venuePresenter.getVenue(e.getVenueID(), new VenueCallback() {
+                    venuePresenter.getVenue(e.getVenueID(), new VenueCallback.GetVenueCallback() {
                         @Override
                         public void getVenueCallback(Venue venue) {
                             venueText.setText("Venue: " + venue.getVenueName());
@@ -77,8 +77,8 @@ public class EventView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upcoming_events);
 
-        this.eventPresenter = new EventPresenter(this, this.database);
-        this.venuePresenter = new VenuePresenter(new VenueView(), this.database); // TODO Change VenueView later
+        this.eventPresenter = new EventPresenter(this.database);
+        this.venuePresenter = new VenuePresenter(this.database); // TODO Change VenueView later
         this.schedulePresenter = new SchedulePresenter(new ScheduleView(), this.eventPresenter, this.database); // TODO change
         addUpcomingEvents();
     }

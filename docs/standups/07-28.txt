@@ -1,0 +1,56 @@
+Name: Chun Kang Lu
+
+What have you done since yesterday?
+Planned out structure and created design mock-up
+
+What are you planning on doing today?
+Discuss more with group members regarding delegating tasks and start creating backend classes
+
+Any impediments or stumbling blocks?
+None so far
+
+Name: Max Rack
+
+What have you done since yesterday?
+Set up Firebase project and invited group members
+
+What are you planning on doing today?
+Work with group members to determine who does which user story
+
+Any impediments or stumbling blocks?
+All good
+
+Name: Keethan Jeyabalan
+
+What have you done since yesterday?
+Figure out how to use GitHub.
+Getting familiar with project requirements and brainstorming solutions. 
+
+What are you planning on doing today?
+Figure out how the work will be distributed so that we can get started as soon as possible.
+
+Any impediments or stumbling blocks?
+Nothing as of yet.
+
+Name: Shence Yang
+
+What have you done since yesterday?
+Set up GitHub account and invite group members
+
+What are you planning on doing today?
+Discuss each one's role.
+Figure out which design pattern are we using.
+
+Any impediments or stumbling blocks?
+Not yet
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...

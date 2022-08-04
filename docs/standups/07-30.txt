@@ -1,0 +1,54 @@
+Name: Chun Kang Lu
+
+What have you done since yesterday?
+Completed almost all functionality of Venues and Events
+
+What are you planning on doing today?
+More methods for modifying events in database as well as starting on UI elements related to events.
+
+Any impediments or stumbling blocks?
+Github and merge conflict problems
+
+Name: Mustafa Hasan
+
+What have you done since yesterday?
+- Got assigned to a user story
+
+What are you planning on doing today?
+- Start implementing my assigned user story with Keethan
+
+Any impediments or stumbling blocks?
+- One team member is MIA 
+
+Name: Keethan Jeyabalan
+
+What have you done since yesterday?
+Finally got assigned a user story.
+
+What are you planning on doing today?
+Will begin to plan and implement user story with partner Mustafa.
+
+Any impediments or stumbling blocks?
+One absent group partner makes things hard to organize.
+
+Name: Shence Yang
+
+What have you done since yesterday?
+Set up the backend database
+
+What are you planning on doing today?
+Working onto next step (backend)
+
+Any impediments or stumbling blocks?
+One group member didn't show up on the meeting
+
+Name: Max Rack
+
+What have you done since yesterday?
+Researched and set up Firebase for email/passowrd authentication
+
+What are you planning on doing today?
+Begin work on user story 6
+
+Any impediments or stumbling blocks?
+Haven't been able to contact a group member and having to split working time on another class assignment
