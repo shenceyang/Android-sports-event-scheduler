@@ -1,5 +1,7 @@
 package com.example.b07project;
 
+import java.util.List;
+
 public interface VenueCallback {
     interface GetVenueCallback {
         void getVenueCallback(Venue venue);
@@ -10,7 +12,8 @@ public interface VenueCallback {
     interface SportInAvailableSportsCallback {
         void sportInAvailableSportsCallback();
     }
-    interface EventTimeNotOverlappingCallback {
-        void eventTimeNotOverlappingCallback();
+
+    interface GetAllVenuesCallback {
+        void getAllVenuesCallback(List<Venue> allVenues);
     }
 }
