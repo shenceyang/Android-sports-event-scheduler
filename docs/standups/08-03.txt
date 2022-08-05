@@ -9,46 +9,46 @@ Discuss and live collaborate group about how to connect UI pages together
 Any impediments or stumbling blocks?
 Missing group member...
 
-Name: 
+Name: Shence
 
 What have you done since yesterday?
-	- Put points here ...
+Create customer service center UI
 
 What are you planning on doing today?
-	- Put points here ...
+Will discuss and connect the UI pages in tomorrow's tutorial
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Missing one group member, we have no idea what he've been done so far.
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Fixed problems I was having, just need to add back button for the add venue page
 
 What are you planning on doing today?
-	- Put points here ...
+Add a back button and discuss next steps with group
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Missing group member
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+Finished list of Venues
 
 What are you planning on doing today?
-	- Put points here ...
+Figure out how callback functions work
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Struggling to understand how callback functions work
 
-Name: 
+Name: Mustafa Hasan
 
 What have you done since yesterday?
-	- Put points here ...
+Finished venue template
 
 What are you planning on doing today?
-	- Put points here ...
+Work on venues
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Had issues with andorid studio not running app (solved now)
