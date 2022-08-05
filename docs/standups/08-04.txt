@@ -42,13 +42,13 @@ implementing schedule view
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Shence Yang
 
 What have you done since yesterday?
-	- Put points here ...
+Linked the UI pages
 
 What are you planning on doing today?
-	- Put points here ...
+Waiting for see my Schedule UI and link them to final version of our app
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
