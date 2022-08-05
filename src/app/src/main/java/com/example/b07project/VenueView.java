@@ -37,6 +37,21 @@ public class VenueView extends AppCompatActivity {
                 View newVenue = inflater.inflate(R.layout.activity_venues_template, venueList, false);
 
                 TextView venueText = (TextView) newVenue.findViewById(R.id.venueName);
+                TextView availableSportsText = (TextView) newVenue.findViewById(R.id.availableSports);
+                TextView allSportsAvailableText = (TextView) newVenue.findViewById(R.id.allSportsAvailable);
+
+
+                venuePresenter.getAvailableSports(v, new VenueCallback.GetAvailableSportsCallback() {
+                    @Override
+                    public void getAvailableSportsCallback(List<String> sports) {
+                        for(String sport : sports)
+                        {
+                            availableSportsText.append(sport + "\n");
+                        }
+                    }
+                });
+
+
 
                 venuePresenter.getVenue(v.getVenueID(), new VenueCallback.GetVenueCallback()
                 {
