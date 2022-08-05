@@ -1,0 +1,54 @@
+Name: Chun Kang Lu
+
+What have you done since yesterday?
+Started work on New Event Page, and learning about Date and Time pickers in Android
+
+What are you planning on doing today?
+Continue work on New Event Page hoping to finish it
+
+Any impediments or stumbling blocks?
+1 Group member constantly not online due to family circumstances, and Android Studio issues
+
+Name: Shence Yang
+
+What have you done since yesterday?
+Finish login UI page and create account UI page(connect it with firebase)
+
+What are you planning on doing today?
+Create UI page for customer account 
+
+Any impediments or stumbling blocks?
+One group member didn't show up and i'm waiting for his code.
+
+Name: Max Rack
+
+What have you done since yesterday?
+Continued trying to fix button problem, had to shift focus onto new problems
+
+What are you planning on doing today?
+Fixing problems with android studio and fixing buttons
+
+Any impediments or stumbling blocks?
+Something wrong with android studio. Play button isn't clickable and xml files aren't displaying properly
+
+Name: Mustafa Hasan	
+
+What have you done since yesterday?
+Finished full design
+
+What are you planning on doing today?
+Finish implementing the features
+
+Any impediments or stumbling blocks?
+None
+
+Name: Keethan Jeyabaln
+
+What have you done since yesterday?
+Started implementing design
+
+What are you planning on doing today?
+Implementing remaining features
+
+Any impediments or stumbling blocks?
+None.

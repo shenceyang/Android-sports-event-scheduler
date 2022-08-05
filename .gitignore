@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+.DS_Store
+=======
 .idea
 src/.gradle
 src/.idea
+.DS_Store
+>>>>>>> 73858fd48d4ce5226bf3d6ff2544906620d23188

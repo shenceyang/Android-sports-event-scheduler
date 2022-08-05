@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         eventPresenter.pushEvent(e2);
 
-        Intent intent = new Intent(this, AdminUpEvents.class);
+
+        Intent intent = new Intent(this, login_page.class);
         startActivity(intent);
 
 //        eventPresenter.getSortedListEvents(new EventCallback.GetSortedListEventsCallback() {

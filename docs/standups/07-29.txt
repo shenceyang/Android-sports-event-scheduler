@@ -1,0 +1,56 @@
+Name: Chun Kang Lu 
+
+What have you done since yesterday?
+Planned out sprint backlog, delegated tasks to 3 group members, started on backend Event and Venue classes.
+
+What are you planning on doing today?
+More progress on Event and Venue functionality regarding interaction with database.
+
+Any impediments or stumbling blocks?
+Half the group members could not make it to scrum meeting, group is a bit disorganized.
+
+Name: Max Raxk
+
+What have you done since yesterday?
+Worked with group to organize what our next steps are
+
+What are you planning on doing today?
+Work on figuring out how to use Firebase for username/password authentication
+
+Any impediments or stumbling blocks?
+Only half of the group were in the meeting so it was harder to plan 
+
+Name: Mustafa Hasan
+
+What have you done since yesterday?
+Reviewed app outlines and template presented by other team members
+
+What are you planning on doing today?
+Start implementing the template on Android Studio
+
+Any impediments or stumbling blocks?
+Wasn't able to make it to group meeting because of work. Will try to find ways around that.
+
+Name: Keethan Jeyabalan
+
+What have you done since yesterday?
+Experimented with Android Studio to develop an idea of how to create solutions for each task.
+
+What are you planning on doing today?
+Getting started on the task that I am going to be delegated to so that we can make some progress.
+
+Any impediments or stumbling blocks?
+Still having a rough time getting things started and formally assigning parts to everyone so that we can all get started.
+
+Name: Shence Yang
+
+What have you done since yesterday?
+Planed out the structure of user stories
+Join the meeting to organize what we do next
+
+What are you planning on doing today?
+Implement backend 
+
+Any impediments or stumbling blocks?
+Only half of the group were in the meeting so we only made a rough plan
+
