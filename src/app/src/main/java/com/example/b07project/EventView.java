@@ -19,13 +19,14 @@ public class EventView extends AppCompatActivity {
     private VenuePresenter venuePresenter;
     private SchedulePresenter schedulePresenter;
     private DatabaseReference database = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
+    private String userID;
 
     private void addUpcomingEvents() {
         this.eventPresenter.getSortedListEvents(new EventCallback.GetSortedListEventsCallback() {
             @Override
             public void getSortedListEventsCallback(List<Event> sortedEvents) {
                 LinearLayout eventList = (LinearLayout) findViewById(R.id.eventList);
-                for(Event e: sortedEvents) {
+                for(Event event: sortedEvents) {
 //                    Log.d("sortedevents", String.valueOf(event.getEventID()));
                     LayoutInflater inflater = getLayoutInflater();
                     View newEvent = inflater.inflate(R.layout.upcoming_events_template, eventList, false);
@@ -39,32 +40,70 @@ public class EventView extends AppCompatActivity {
                     TextView maxPlayersText = (TextView) newEvent.findViewById(R.id.eventMaxPlayers);
                     Button joinButton = (Button) newEvent.findViewById(R.id.joinButton);
 
-                    venuePresenter.getVenue(e.getVenueID(), new VenueCallback.GetVenueCallback() {
+                    venuePresenter.getVenue(event.getVenueID(), new VenueCallback.GetVenueCallback() {
                         @Override
                         public void getVenueCallback(Venue venue) {
                             venueText.setText("Venue: " + venue.getVenueName());
                         }
                     });
-                    eventPresenter.getEvent(e.getEventID(), new EventCallback.GetEventCallback() {
-                        @Override
-                        public void getEventCallback(Event event) {
-                            dateText.setText("Date: " + event.getDay() + "/" + event.getMonth() + "/" + event.getYear());
-                            sportText.setText("Sport: " + event.getSport());
-                            startText.setText("Start: " + event.getStartHour() + ":" + String.format("%02d", event.getStartMin()));
-                            endText.setText("End: " + event.getEndHour() + ":" + String.format("%02d", event.getEndMin()));
-                            joinedPlayersText.setText("Players joined: " + event.getCurrPlayers());
-                            maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
+                    dateText.setText("Date: " + event.getDay() + "/" + event.getMonth() + "/" + event.getYear());
+                    sportText.setText("Sport: " + event.getSport());
+                    startText.setText("Start: " + event.getStartHour() + ":" + String.format("%02d", event.getStartMin()));
+                    endText.setText("End: " + event.getEndHour() + ":" + String.format("%02d", event.getEndMin()));
+                    joinedPlayersText.setText("Players joined: " + event.getCurrPlayers());
+                    maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
 
-//                            joinButton.setOnClickListener(new View.OnClickListener() {
-//                                @Override
-//                                public void onClick(View view) {
-//                                    Schedule s = new Schedule(event.getEventID(), customerID, venueID) // TODO change
-//                                }
-//                            });
+                    // Check if current user already joined event
+                    schedulePresenter.isScheduled(userID, event.getEventID(), new ScheduleCallback.IsScheduledCallback() {
+                        @Override
+                        public void isScheduledCallback() {
+                            joinButton.setEnabled(false);
                         }
                     });
 
-
+                    if(event.getMaxPlayers() == event.getCurrPlayers()) {
+                        joinButton.setEnabled(false);
+                    }
+                    else {
+                        joinButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Schedule s = new Schedule(event.getEventID(), userID, event.getVenueID()); // TODO change
+                                schedulePresenter.pushSchedule(s);
+                                eventList.removeAllViews();
+                                addUpcomingEvents();
+                            }
+                        });
+                    }
+//                    eventPresenter.getEvent(e.getEventID(), new EventCallback.GetEventCallback() {
+//                        @Override
+//                        public void getEventCallback(Event event) {
+//                            dateText.setText("Date: " + event.getDay() + "/" + event.getMonth() + "/" + event.getYear());
+//                            sportText.setText("Sport: " + event.getSport());
+//                            startText.setText("Start: " + event.getStartHour() + ":" + String.format("%02d", event.getStartMin()));
+//                            endText.setText("End: " + event.getEndHour() + ":" + String.format("%02d", event.getEndMin()));
+//                            joinedPlayersText.setText("Players joined: " + event.getCurrPlayers());
+//                            maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
+//
+//                            // Check if current user already joined event
+//                            schedulePresenter.isScheduled(userID, event);
+//
+//                            if(event.getMaxPlayers() == event.getCurrPlayers()) {
+//                                joinButton.setEnabled(false);
+//                            }
+//                            else {
+//                                joinButton.setOnClickListener(new View.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(View view) {
+//                                        Schedule s = new Schedule(event.getEventID(), userID, event.getVenueID()); // TODO change
+//                                        schedulePresenter.pushSchedule(s);
+//                                        eventList.removeAllViews();
+//                                        addUpcomingEvents();
+//                                    }
+//                                });
+//                            }
+//                        }
+//                    });
 
                     eventList.addView(newEvent);
                 }
@@ -80,6 +119,7 @@ public class EventView extends AppCompatActivity {
         this.eventPresenter = new EventPresenter(this.database);
         this.venuePresenter = new VenuePresenter(this.database); // TODO Change VenueView later
         this.schedulePresenter = new SchedulePresenter(new ScheduleView(), this.eventPresenter, this.database); // TODO change
+        this.userID = getIntent().getStringExtra("userID");
         addUpcomingEvents();
     }
 

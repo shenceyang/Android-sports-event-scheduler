@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
         Schedule s1 = new Schedule(e.getEventID(),"shence",v.getVenueID());
         Schedule s2 = new Schedule(e.getEventID(),"kang",v.getVenueID());
 
-        Admin a = new Admin("sb","123");
-
-
         Event e1 = new Event(4, 13, 12, 2022, 7, 0, 9, 0, "basketball", v.getVenueID());
         Event e2 = new Event(8, 10, 8, 2022, 7, 0, 9, 0, "basketball", v.getVenueID());
         v.addEvent(e1);
@@ -47,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         SchedulePresenter schedulePresenter = new SchedulePresenter(new ScheduleView(), eventPresenter, d);
         AdminPresenter adminPresenter = new AdminPresenter(new AdminView(),d);
 
+//        Admin a = new Admin("admin", "admin");
+//
+//        adminPresenter.pushAdmin(a);
+
         venuePresenter.pushVenue(v);
 
         eventPresenter.pushEvent(e);
@@ -56,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
 
         schedulePresenter.pushSchedule(s1);
         schedulePresenter.pushSchedule(s2);
-        adminPresenter.pushAdmin(a);
 
         eventPresenter.pushEvent(e2);
 
 
-        Intent intent = new Intent(this, VenueView.class);
+
+        Intent intent = new Intent(this, login_page.class);
         startActivity(intent);
 
 //        eventPresenter.getSortedListEvents(new EventCallback.GetSortedListEventsCallback() {

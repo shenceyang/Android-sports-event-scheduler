@@ -18,4 +18,10 @@ public interface VenueCallback {
     interface GetAvailableSportsCallback {
         void getAvailableSportsCallback(List<String> sports);
     }
+    interface CheckDuplicateVenueCallbackTrue {
+        void checkDuplicateVenueCallbackTrue();
+    }
+    interface CheckDuplicateVenueCallbackFalse {
+        void checkDuplicateVenueCallbackFalse();
+    }
 }

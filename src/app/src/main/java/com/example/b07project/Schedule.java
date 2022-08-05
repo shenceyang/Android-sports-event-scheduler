@@ -1,14 +1,21 @@
 package com.example.b07project;
 
 public class Schedule {
-    private int eventID;
-    private String customerID;
-    private int venueID;
+    public static int nextScheduleID = 1;
 
-    public Schedule(int eventID, String customerID, int venueID) {
+    private int eventID;
+    private String userID;
+    private int venueID;
+    private int scheduleID;
+
+    public Schedule() {}
+
+    public Schedule(int eventID, String userID, int venueID) {
         this.eventID = eventID;
-        this.customerID = customerID;
+        this.userID = userID;
         this.venueID = venueID;
+        this.scheduleID = nextScheduleID;
+        nextScheduleID++;
     }
 
 
@@ -17,12 +24,16 @@ public class Schedule {
         return eventID;
     }
 
-    public String getCustomerID() {
-        return customerID;
+    public String getUserID() {
+        return userID;
     }
 
-    public int getVenueName() {
+    public int getVenueID() {
         return venueID;
+    }
+
+    public int getScheduleID() {
+        return scheduleID;
     }
 
 
@@ -31,11 +42,11 @@ public class Schedule {
         this.eventID = eventID;
     }
 
-    public void setCustomerID(String customerID) {
-        this.customerID = customerID;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public void setVenueName(int venueID) {
+    public void setVenueID(int venueID) {
         this.venueID = venueID;
     }
 }

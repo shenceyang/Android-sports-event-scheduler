@@ -59,26 +59,39 @@ public class VenuePresenter {
                 .child(String.valueOf(venueID))
                 .removeValue();
 
-        // Delete venue's events from allEvents
-        this.database.child("allEvents")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        // For each event in allEvents
-                        for(DataSnapshot event: snapshot.getChildren()) {
-                            if(event.child("venueID").getValue().toString().equals(String.valueOf(venueID))) {
-                                event.getRef().removeValue();
-                            }
-                        }
+        // Delete from allEvents
+        this.database.child("allEvents").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // For each event in allEvents
+                for(DataSnapshot event: snapshot.getChildren()) {
+                    if(event.child("venueID").getValue().toString().equals(String.valueOf(venueID))) {
+                        event.getRef().removeValue();
                     }
+                }
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        // Delete from schedules
+        this.database.child("schedules").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot schedule: snapshot.getChildren()) {
+                    if(schedule.child("venueID").getValue().toString().equals(String.valueOf(venueID))) {
+                        schedule.getRef().removeValue();
                     }
-                });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
-    // TODO add needed queries for getting venue info from database (name, availableSports) maybe also query for all events in this venue?
     public void getVenue(int venueID, VenueCallback.GetVenueCallback venueCallback) {
         this.database.child("venues").child(String.valueOf(venueID)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -138,6 +151,31 @@ public class VenuePresenter {
                 }
                 else {
                     Toast.makeText(context, "Invalid Sport", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public void checkDuplicateVenue(String venueName, Context context, VenueCallback.CheckDuplicateVenueCallbackTrue checkDuplicateVenueCallbackTrue, VenueCallback.CheckDuplicateVenueCallbackFalse checkDuplicateVenueCallbackFalse) {
+        this.database.child("venues").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean isDuplicate = false;
+                for(DataSnapshot venue: snapshot.getChildren()) {
+                    if(venue.child("venueName").getValue(String.class).equals(venueName)) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+                if(!isDuplicate) {
+                    checkDuplicateVenueCallbackTrue.checkDuplicateVenueCallbackTrue();
+                }
+                else {
+                    checkDuplicateVenueCallbackFalse.checkDuplicateVenueCallbackFalse();
                 }
             }
 
