@@ -31,16 +31,16 @@ Showing events after clicking on venue.
 Any impediments or stumbling blocks?
 Figuring out how to make layout look nice.
 
-Name: 
+Name: Mustafa Hasan
 
 What have you done since yesterday?
-	- Put points here ...
+Finished schedule layout
 
 What are you planning on doing today?
-	- Put points here ...
+implementing schedule view
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
