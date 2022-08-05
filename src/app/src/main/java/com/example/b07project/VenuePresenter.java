@@ -235,4 +235,24 @@ public class VenuePresenter {
         });
     }
 
+    public void getAvailableSports(Venue v, VenueCallback.GetAvailableSportsCallback sportsCallback) {
+        List<String> availableSports = new ArrayList<>();
+
+        database.child("venues").child(String.valueOf(v.venueID)).child("availableSports").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                availableSports.clear();
+                System.out.println(snapshot.getChildren());
+                for (DataSnapshot sport: snapshot.getChildren()) {
+                    String toAdd = sport.getValue(String.class);
+                    availableSports.add(toAdd);
+                }
+                sportsCallback.getAvailableSportsCallback(availableSports);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
 }

@@ -28,9 +28,31 @@
                 android:text="@string/event_venue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintHorizontal_bias="0.081"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.444" />
+
+            <TextView
+                android:id="@+id/allSportsAvailable"
+                android:layout_width="141dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Available Sports:"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/availableSports"
+                android:layout_width="141dp"
+                android:layout_height="59dp"
+                android:layout_marginEnd="16dp"
+                android:text=""
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.753" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
