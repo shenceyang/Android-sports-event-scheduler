@@ -39,6 +39,9 @@
         <activity
             android:name=".AddVenue"
             android:exported="false" />
+        <activity
+            android:name=".AdminUpEvents"
+            android:exported="false" />
     </application>
 
 </manifest>

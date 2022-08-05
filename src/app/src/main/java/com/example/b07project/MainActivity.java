@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         eventPresenter.pushEvent(e2);
 
-        Intent intent = new Intent(this, VenueView.class);
+        Intent intent = new Intent(this, AdminUpEvents.class);
         startActivity(intent);
 
 //        eventPresenter.getSortedListEvents(new EventCallback.GetSortedListEventsCallback() {

@@ -35,7 +35,7 @@ public class AddVenue extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                //Intent intent = new Intent(this, something.class); // REPLACE something WITH REDIRECTION AFTER SUBMIT AND UNCOMMENT startActivity
+                //Intent intent = new Intent(this, something.class); // REPLACE something WITH REDIRECTION AFTER BACK AND UNCOMMENT startActivity
                 //startActivity(intent);
             }
         });
@@ -44,9 +44,16 @@ public class AddVenue extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 String sport = editText1.getText().toString();
-                sports.add(sport);
-                editText1.getText().clear();
-                Toast.makeText(AddVenue.this, "Added " + sport, Toast.LENGTH_SHORT).show();
+
+                if(sport.equals("")){
+                    Toast.makeText(AddVenue.this, "Not a valid sport", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+                    sports.add(sport);
+                    editText1.getText().clear();
+                    Toast.makeText(AddVenue.this, "Added " + sport, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
