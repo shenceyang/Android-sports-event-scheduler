@@ -9,46 +9,46 @@ Start testing components and finish up connecting pages together
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Added finishing toughes to admin add venue and began work on user story 7
 
 What are you planning on doing today?
-	- Put points here ...
+Continue on user story 7
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Misunderstood how the database worked causing me to waste some time writing useless code, but now I understand
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+Made it so that venues display available sports.
 
 What are you planning on doing today?
-	- Put points here ...
+Showing events after clicking on venue.
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Figuring out how to make layout look nice.
 
-Name: 
+Name: Mustafa Hasan
 
 What have you done since yesterday?
-	- Put points here ...
+Finished schedule layout
 
 What are you planning on doing today?
-	- Put points here ...
+implementing schedule view
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
-Name: 
+Name: Shence Yang
 
 What have you done since yesterday?
-	- Put points here ...
+Linked the UI pages
 
 What are you planning on doing today?
-	- Put points here ...
+Waiting for see my Schedule UI and link them to final version of our app
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
