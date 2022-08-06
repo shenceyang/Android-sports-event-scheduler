@@ -31,16 +31,16 @@ Continue work on user story 7
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Shence
 
 What have you done since yesterday?
-	- Put points here ...
+Not too much, yesterday was working on the math
 
 What are you planning on doing today?
-	- Put points here ...
+Modify service center UI and link with Keethan's code
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
