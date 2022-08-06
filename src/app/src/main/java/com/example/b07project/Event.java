@@ -8,8 +8,8 @@ import android.util.Log;
 import com.google.firebase.database.Exclude;
 
 public class Event {
-    public static int totalEvents = 0;
-    public static int nextEventID = 1;
+//    public static int totalEvents = 0;
+//    public static int nextEventID = 1;
 
     private int eventID;
     private int maxPlayers;
@@ -27,9 +27,9 @@ public class Event {
 
     public Event() {}
 
-    public Event(int maxPlayers, int day, int month, int year, int startHour, int startMin, int endHour, int endMin, String sport, int venueID) {
-        this.eventID = nextEventID;
-        nextEventID++;
+    public Event(int eventID, int maxPlayers, int day, int month, int year, int startHour, int startMin, int endHour, int endMin, String sport, int venueID) {
+        this.eventID = eventID;
+//        nextEventID++;
         this.maxPlayers = maxPlayers;
         this.day = day;
         this.month = month;
@@ -40,7 +40,7 @@ public class Event {
         this.endMin = endMin;
         this.sport = sport;
         this.venueID = venueID;
-        totalEvents++;
+//        totalEvents++;
         String sortKeyStr = String.valueOf(year) + String.format("%02d", month) + String.format("%02d", day) + String.format("%02d", startHour) + String.format("%02d", startMin);
         this.sortKey = Long.parseLong(sortKeyStr);
     }

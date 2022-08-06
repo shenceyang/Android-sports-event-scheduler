@@ -32,7 +32,7 @@
             tools:ignore="SpeakableTextPresentCheck">
 
             <LinearLayout
-                android:id="@+id/venueList"
+                android:id="@+id/adminVenueList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 

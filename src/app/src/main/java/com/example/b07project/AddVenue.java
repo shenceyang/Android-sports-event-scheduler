@@ -20,6 +20,11 @@ public class AddVenue extends AppCompatActivity {
 
     String name;
     ArrayList<String> sports = new ArrayList<String>();
+
+    public void clearSports() {
+        this.sports.clear();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -44,9 +49,16 @@ public class AddVenue extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 String sport = editText1.getText().toString();
-                sports.add(sport);
-                editText1.getText().clear();
-                Toast.makeText(AddVenue.this, "Added " + sport, Toast.LENGTH_SHORT).show();
+
+                if(sport.equals("")){
+                    Toast.makeText(AddVenue.this, "Not a valid sport", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+                    sports.add(sport);
+                    editText1.getText().clear();
+                    Toast.makeText(AddVenue.this, "Added " + sport, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -61,13 +73,33 @@ public class AddVenue extends AppCompatActivity {
                     Toast.makeText(AddVenue.this, "Please enter at least one sport", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Venue venue = new Venue(name, sports);
                     VenuePresenter venuePresenter = new VenuePresenter(database);
-                    venuePresenter.pushVenue(venue);
-                    editText1.getText().clear();
-                    editText2.getText().clear();
-                    sports.clear();
-                    Toast.makeText(AddVenue.this, "Added venue " + name, Toast.LENGTH_SHORT).show();
+                    // Check for duplicate venue name
+                    // Show toast if venue of same name exists
+                    venuePresenter.checkDuplicateVenue(name, AddVenue.this, new VenueCallback.CheckDuplicateVenueCallbackTrue() {
+                        @Override
+                        public void checkDuplicateVenueCallbackTrue() {
+                            ID id = new ID(database);
+                            id.getNextVenueID(new IDCallback.GetNextVenueIDCallback() {
+                                @Override
+                                public void getNextVenueIDCallback(int nextID) {
+                                    Venue venue = new Venue(nextID, name, sports);
+                                    venuePresenter.pushVenue(venue);
+                                    editText1.getText().clear();
+                                    editText2.getText().clear();
+                                    sports.clear();
+                                    Toast.makeText(AddVenue.this, "Added venue " + name, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    }, new VenueCallback.CheckDuplicateVenueCallbackFalse() {
+                        @Override
+                        public void checkDuplicateVenueCallbackFalse() {
+                            Toast.makeText(AddVenue.this,"Venue already exists",Toast.LENGTH_SHORT).show();
+                            clearSports();
+                        }
+                    });
+
                     //Intent intent = new Intent(this, something.class); // REPLACE something WITH REDIRECTION AFTER SUBMIT AND UNCOMMENT startActivity
                     //startActivity(intent);
                 }

@@ -42,27 +42,40 @@ public class EventPresenter {
                 .removeValue();
 
         // Remove from venues
-        this.database.child("venues")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        // For each venue in venues
-                        for(DataSnapshot venue: dataSnapshot.getChildren()) {
-                            // For each event
-                            for(DataSnapshot event: venue.child("events").getChildren()) {
-                                // Delete if eventID matches
-                                if(event.getValue().toString().equals(String.valueOf(eventID))) {
-                                    event.getRef().removeValue();
-                                }
-                            }
+        this.database.child("venues").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // For each venue in venues
+                for(DataSnapshot venue: dataSnapshot.getChildren()) {
+                    // For each event
+                    for(DataSnapshot event: venue.child("events").getChildren()) {
+                        // Delete if eventID matches
+                        if(event.getValue().toString().equals(String.valueOf(eventID))) {
+                            event.getRef().removeValue();
                         }
                     }
+                }
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        // Remove from schedules
+        this.database.child("schedules").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot schedule: snapshot.getChildren()) {
+                    if(schedule.child("eventID").getValue().toString().equals(String.valueOf(eventID))) {
+                        schedule.getRef().removeValue();
                     }
-                });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
     public void addPlayer(int eventID) {
@@ -70,6 +83,13 @@ public class EventPresenter {
                 .child(String.valueOf(eventID))
                 .child("currPlayers")
                 .setValue(ServerValue.increment(1));
+    }
+
+    public void removePlayer(int eventID) {
+        this.database.child("allEvents")
+                .child(String.valueOf(eventID))
+                .child("currPlayers")
+                .setValue(ServerValue.increment(-1));
     }
 
 //    // TODO to not allow duplicate events?
@@ -100,7 +120,7 @@ public class EventPresenter {
 
     public void getSortedListEvents(EventCallback.GetSortedListEventsCallback eventCallback) {
         List<Event> sortedEvents = new ArrayList<Event>();
-        this.database.child("allEvents").orderByChild("sortKey").addValueEventListener(new ValueEventListener() {
+        this.database.child("allEvents").orderByChild("sortKey").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 sortedEvents.clear();
@@ -116,4 +136,5 @@ public class EventPresenter {
             }
         });
     }
+
 }

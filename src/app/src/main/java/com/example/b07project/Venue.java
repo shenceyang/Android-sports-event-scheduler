@@ -1,14 +1,16 @@
 package com.example.b07project;
 
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Venue {
-    public static int totalVenues = 0;
-    public static int nextVenueID = 1;
+//    public static int totalVenues = 0;
+//    public static int nextVenueID = 1;
 
     int venueID;
     String venueName;
@@ -18,12 +20,12 @@ public class Venue {
     public Venue() {}
 
     // For creating new Venues
-    public Venue(String venueName, ArrayList<String> availableSports) {
-        this.venueID = nextVenueID;
-        nextVenueID++;
+    public Venue(int venueID, String venueName, ArrayList<String> availableSports) {
+        this.venueID = venueID;
+//        nextVenueID++;
         this.venueName = venueName;
         this.availableSports = availableSports;
-        totalVenues++;
+//        totalVenues++;
     }
 
     public void addEvent(Event event) {
