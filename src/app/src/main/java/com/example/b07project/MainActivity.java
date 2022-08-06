@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Intent intent = new Intent(this, signup_page.class);
+        Intent intent = new Intent(this, login_page.class);
         startActivity(intent);
 
 //        eventPresenter.getSortedListEvents(new EventCallback.GetSortedListEventsCallback() {
