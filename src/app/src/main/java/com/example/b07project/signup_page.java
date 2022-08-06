@@ -28,15 +28,23 @@ public class signup_page extends AppCompatActivity {
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Check for existing user with same username
-                // Will show Toast if duplicate
-                signupPresenter.checkDuplicateUser(username.getText().toString(), signup_page.this, new SignupCallback.CheckDuplicateUserCallback() {
+                // TODO check if empty and set error
+
+                signupPresenter.checkDuplicateAdmin(username.getText().toString(), signup_page.this, new SignupCallback.CheckDuplicateAdminCallback() {
                     @Override
-                    public void checkDuplicateUserCallback() {
-                        Customer c = new Customer(username.getText().toString(), password.getText().toString());
-                        DatabaseReference d = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
-                        CustomerPresenter customerPresenter = new CustomerPresenter(new CustomerView(), d);
-                        customerPresenter.pushCustomer(c);
+                    public void checkDuplicateAdminCallback() {
+                        // Runs if not admin
+                        // Check for existing user with same username
+                        // Will show Toast if duplicate
+                        signupPresenter.checkDuplicateUser(username.getText().toString(), signup_page.this, new SignupCallback.CheckDuplicateUserCallback() {
+                            @Override
+                            public void checkDuplicateUserCallback() {
+                                Customer c = new Customer(username.getText().toString(), password.getText().toString());
+                                DatabaseReference d = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
+                                CustomerPresenter customerPresenter = new CustomerPresenter(new CustomerView(), d);
+                                customerPresenter.pushCustomer(c);
+                            }
+                        });
                     }
                 });
             }

@@ -9,12 +9,14 @@ import android.content.Intent;
 import com.google.android.material.button.MaterialButton;
 
 public class Customer_center extends AppCompatActivity {
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_center);
 
+        this.userID = getIntent().getStringExtra("userID");
         MaterialButton schedulebtn = (MaterialButton) findViewById(R.id.schedulebtn);
         MaterialButton bookbtn = (MaterialButton) findViewById(R.id.bookbtn);
         MaterialButton quitbtn = (MaterialButton) findViewById(R.id.quitbtn);
@@ -23,6 +25,7 @@ public class Customer_center extends AppCompatActivity {
         schedulebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // pass userID
 
 
             }
@@ -42,6 +45,7 @@ public class Customer_center extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Customer_center.this,  EventView.class);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
             }
         });

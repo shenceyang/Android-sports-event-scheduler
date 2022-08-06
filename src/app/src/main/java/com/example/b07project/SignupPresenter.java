@@ -17,6 +17,30 @@ public class SignupPresenter {
         this.database = database;
     }
 
+    public void checkDuplicateAdmin(String username, Context context, SignupCallback.CheckDuplicateAdminCallback checkDuplicateAdminCallback) {
+        this.database.child("admins").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean duplicate = false;
+                for(DataSnapshot admin: snapshot.getChildren()) {
+                    if(admin.child("username").getValue(String.class).equals(username)) {
+                        duplicate = true;
+                    }
+                }
+                if(!duplicate) {
+                    checkDuplicateAdminCallback.checkDuplicateAdminCallback();
+                }
+                else {
+                    Toast.makeText(context,"Username already exists",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
     public void checkDuplicateUser(String username, Context context, SignupCallback.CheckDuplicateUserCallback checkDuplicateUserCallback) {
         this.database.child("customers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

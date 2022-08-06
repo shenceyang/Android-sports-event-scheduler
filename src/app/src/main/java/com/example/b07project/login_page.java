@@ -30,27 +30,37 @@ public class login_page extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // TODO check if empty and set error (copy from signup_page)
+
+                loginPresenter.authenticateAdmin(username.getText().toString(), password.getText().toString(), login_page.this, new LoginCallback.AuthenticateAdminCallback() {
+                    @Override
+                    public void authenticateAdminCallback() {
+                        Toast.makeText(login_page.this,"Login successful",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(login_page.this,  Admin_center.class);
+                        intent.putExtra("userID", "admin");
+                        startActivity(intent);
+                    }
+                });
 
                 // Login Authentication
-                if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
-                    //correct
-                    Toast.makeText(login_page.this,"Login successful",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(login_page.this,  Admin_center.class);
-                    intent.putExtra("userID", "admin");
-                    startActivity(intent);
-                }
+//                if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
+//                    //correct
+//                    Toast.makeText(login_page.this,"Login successful",Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(login_page.this,  Admin_center.class);
+//                    intent.putExtra("userID", "admin");
+//                    startActivity(intent);
+//                }
                 // If not admin, check for user login
                 // Will show Toast for incorrect login
-                else{
-                    loginPresenter.authenticateUser(username.getText().toString(), password.getText().toString(), login_page.this, new LoginCallback.AuthenticateUserCallback() {
-                        @Override
-                        public void authenticateUserCallback() {
-                            Intent intent = new Intent(login_page.this,  Customer_center.class);
-                            intent.putExtra("userID", username.getText().toString());
-                            startActivity(intent);
-                        }
-                    });
-                }
+                loginPresenter.authenticateUser(username.getText().toString(), password.getText().toString(), login_page.this, new LoginCallback.AuthenticateUserCallback() {
+                    @Override
+                    public void authenticateUserCallback() {
+                        Intent intent = new Intent(login_page.this,  Customer_center.class);
+                        intent.putExtra("userID", username.getText().toString());
+                        startActivity(intent);
+                    }
+                });
+
             }
         });
 

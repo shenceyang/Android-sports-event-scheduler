@@ -17,6 +17,30 @@ public class LoginPresenter {
         this.database = database;
     }
 
+    public void authenticateAdmin(String username, String password, Context context, LoginCallback.AuthenticateAdminCallback authenticateAdminCallback) {
+        this.database.child("admins").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                boolean gotAdmin = false;
+                for(DataSnapshot admin: snapshot.getChildren()) {
+                    String adminUsername = admin.child("username").getValue(String.class);
+                    String adminPassword = admin.child("password").getValue(String.class);
+                    if(adminUsername.equals(username) && adminPassword.equals(password)) {
+//                        gotAdmin = true;
+                        authenticateAdminCallback.authenticateAdminCallback();
+                    }
+                }
+//                if(!gotAdmin) {
+//                    Toast.makeText(context,"Login failed",Toast.LENGTH_SHORT).show();
+//                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
     public void authenticateUser(String username, String password, Context context, LoginCallback.AuthenticateUserCallback authenticateUserCallback) {
         this.database.child("customers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
