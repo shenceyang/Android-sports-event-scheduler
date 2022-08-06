@@ -25,6 +25,8 @@
     <string name="event_end_time_prompt">End Time</string>
     <string name="event_date_prompt">Date</string>
     <string name="search_prompt">SEARCH</string>
+    <string name="available_sports">Available Sports:</string>
+    <string name="events">Events</string>
 
 
 </resources>
