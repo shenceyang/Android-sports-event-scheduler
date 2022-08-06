@@ -33,13 +33,13 @@ public class ID {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int nextID = snapshot.getValue(int.class);
                 getNextVenueIDCallback.getNextVenueIDCallback(nextID);
+                incrementVenueID();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        incrementVenueID();
     }
 
     public void getNextEventID(IDCallback.GetNextEventIDCallback getNextEventIDCallback) {
@@ -48,13 +48,13 @@ public class ID {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int nextID = snapshot.getValue(int.class);
                 getNextEventIDCallback.getNextEventIDCallback(nextID);
+                incrementEventID();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        incrementEventID();
     }
 
     public void getNextScheduleID(IDCallback.GetNextScheduleIDCallback getNextScheduleIDCallback) {
@@ -63,12 +63,12 @@ public class ID {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int nextID = snapshot.getValue(int.class);
                 getNextScheduleIDCallback.getNextScheduleIDCallback(nextID);
+                incrementScheduleID();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        incrementScheduleID();
     }
 }
