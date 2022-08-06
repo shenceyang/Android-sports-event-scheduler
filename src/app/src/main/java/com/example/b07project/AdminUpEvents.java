@@ -1,5 +1,6 @@
 package com.example.b07project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,7 +103,17 @@ public class AdminUpEvents extends AppCompatActivity {
         setContentView(R.layout.upcoming_events_admin);
 
         Button searchButton = (Button) findViewById(R.id.button4);
+        Button backButton = (Button) findViewById(R.id.button6);
         EditText editText = (EditText) findViewById(R.id.editTextTextPersonName3);
+
+        backButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(AdminUpEvents.this, Admin_center.class);
+                startActivity(intent);
+            }
+        });
+
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
