@@ -20,16 +20,16 @@ Creating an individual list of venues for the admin.
 Any impediments or stumbling blocks?
 None.
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Finished most of user story 7, some smaller user interactivity issues need to be fixed
 
 What are you planning on doing today?
-	- Put points here ...
+Continue work on user story 7
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
