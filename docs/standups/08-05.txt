@@ -9,16 +9,16 @@ More testing and bug fixes
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+List of venues now also shows available sports.
 
 What are you planning on doing today?
-	- Put points here ...
+Creating an individual list of venues for the admin.
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None.
 
 Name: 
 
