@@ -15,14 +15,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class VenuePresenter {
     private DatabaseReference database;
+    private ID id;
 
     public VenuePresenter(DatabaseReference database) {
         this.database = database;
+        this.id = new ID(database);
     }
 
     public void pushVenue(Venue venue) {
@@ -185,6 +190,67 @@ public class VenuePresenter {
         });
     }
 
+    public void eventTimeNotOverlapping(Event event, Context context, VenueCallback.EventTimeNotOverlappingCallback eventTimeNotOverlappingCallback) {
+        this.database.child("allEvents").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot allEvents) {
+                boolean overlap = false;
+                SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
+                String timeStartStr = String.format("%02d", event.getStartHour()) + ":" + String.format("%02d", event.getStartMin());
+                String timeEndStr = String.format("%02d", event.getEndHour()) + ":" + String.format("%02d", event.getEndMin());
+                try {
+                    Date timeStart = parser.parse(timeStartStr);
+                    Date timeEnd = parser.parse(timeEndStr);
+
+                    for(DataSnapshot otherEventSnapshot: allEvents.getChildren()) {
+                        Event otherEvent = otherEventSnapshot.getValue(Event.class);
+
+                        // Check for overlap in events with same venue and sport
+                        if((event.getVenueID() == otherEvent.getVenueID()) && (event.getSport().equals(otherEvent.getSport())) && (event.getYear() == otherEvent.getYear()) && (event.getMonth() == otherEvent.getMonth()) && (event.getDay() == otherEvent.getDay())) {
+                            // TODO check mins
+                            String otherTimeStartStr = String.format("%02d", otherEvent.getStartHour()) + ":" + String.format("%02d", otherEvent.getStartMin());
+                            String otherTimeEndStr = String.format("%02d", otherEvent.getEndHour()) + ":" + String.format("%02d", otherEvent.getEndMin());
+                            Log.d("timething", "timeStart: " + timeStartStr + " timeEnd: " + timeEndStr + " otherTimeStart: " + otherTimeStartStr + " otherTimeEnd: " + otherTimeEndStr);
+                            try {
+                                Date otherTimeStart = parser.parse(otherTimeStartStr);
+                                Date otherTimeEnd = parser.parse(otherTimeEndStr);
+                                if(timeStart.before(otherTimeStart) && timeEnd.after(otherTimeStart)) {
+                                    Log.d("timething", "overlap1");
+                                    overlap = true;
+                                }
+                                else if((timeStart.after(otherTimeStart) || timeStart.equals(otherTimeStart)) && timeStart.before(otherTimeEnd)) {
+                                    Log.d("timething", "overlap2");
+                                    overlap = true;
+                                }
+                                else if((timeEnd.before(otherTimeEnd) || timeEnd.equals(otherTimeEnd)) && timeEnd.after(otherTimeStart)) {
+                                    Log.d("timething", "overlap3");
+                                    overlap = true;
+                                }
+                            }
+                            catch (ParseException e) {
+                                Log.e("DateError", "Cannot parse Date");
+                            }
+                        }
+                    }
+                    if(!overlap) {
+                        eventTimeNotOverlappingCallback.eventTimeNotOverlappingCallback();
+                    }
+                    else {
+                        Log.d("timething", "overlap toast");
+                        Toast.makeText(context, "Event overlap", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                catch (ParseException e) {
+                    Log.e("DateError", "Cannot parse Date");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
     // ********** For NewEvent **********
 
     public void newEventSubmit(EditText eventVenue, EditText eventSport, EditText eventMaxPlayers, EditText datePicker, EditText startTimePicker, EditText endTimePicker, EventPresenter eventPresenter, Context context) {
@@ -233,24 +299,41 @@ public class VenuePresenter {
         this.getVenueIDFromName(venueName, context, new VenueCallback.GetVenueIDFromNameCallback() {
             @Override
             public void getVenueIDFromNameCallback(int venueID) {
-                Log.d("neweventthing", "Venue Name: " + venueName + ", Venue ID: " + String.valueOf(venueID));
+//                Log.d("neweventthing", "Venue Name: " + venueName + ", Venue ID: " + String.valueOf(venueID));
                 // Continue if sport is valid, else will show Toast saying invalid venue (from venuePresenter)
                 VenuePresenter.this.sportInAvailableSports(venueID, sport, context, new VenueCallback.SportInAvailableSportsCallback() {
                     @Override
                     public void sportInAvailableSportsCallback() {
-                        Event newEvent = new Event(maxPlayers, day, month, year, startHour, startMin, endHour, endMin, sport, venueID);
-//
-                        // Check if time is valid, start time < end time
-                        if(newEvent.isValidTime()) {
-                            // TODO Check not overlapping with other events
-                            eventPresenter.pushEvent(newEvent);
-                        }
-                        else {
-                            Toast.makeText(context, "Invalid Time", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                        // Get next event ID
+                        id.getNextEventID(new IDCallback.GetNextEventIDCallback() {
+                            @Override
+                            public void getNextEventIDCallback(int nextID) {
+                                Event newEvent = new Event(nextID, maxPlayers, day, month, year, startHour, startMin, endHour, endMin, sport, venueID);
+
+                                if(newEvent.isValidMaxPlayers()) {
+                                    // Check if time is valid, start time < end time
+                                    if(newEvent.isValidTime()) {
+
+                                        // Check if time overlaps other events with same venue, sport, date
+                                        eventTimeNotOverlapping(newEvent, context, new VenueCallback.EventTimeNotOverlappingCallback() {
+                                            @Override
+                                            public void eventTimeNotOverlappingCallback() {
+                                                eventPresenter.pushEvent(newEvent);
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        Toast.makeText(context, "Invalid Time", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                else {
+                                    Toast.makeText(context, "Invalid Max Players", Toast.LENGTH_SHORT).show();
+                                }
+                            };
+                        });
+                    };
                 });
-            }
+            };
         });
     }
 

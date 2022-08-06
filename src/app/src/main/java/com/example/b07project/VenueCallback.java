@@ -24,4 +24,7 @@ public interface VenueCallback {
     interface CheckDuplicateVenueCallbackFalse {
         void checkDuplicateVenueCallbackFalse();
     }
+    interface EventTimeNotOverlappingCallback {
+        void eventTimeNotOverlappingCallback();
+    }
 }

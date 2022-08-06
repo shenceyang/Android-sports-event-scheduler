@@ -79,12 +79,18 @@ public class AddVenue extends AppCompatActivity {
                     venuePresenter.checkDuplicateVenue(name, AddVenue.this, new VenueCallback.CheckDuplicateVenueCallbackTrue() {
                         @Override
                         public void checkDuplicateVenueCallbackTrue() {
-                            Venue venue = new Venue(name, sports);
-                            venuePresenter.pushVenue(venue);
-                            editText1.getText().clear();
-                            editText2.getText().clear();
-                            sports.clear();
-                            Toast.makeText(AddVenue.this, "Added venue " + name, Toast.LENGTH_SHORT).show();
+                            ID id = new ID(database);
+                            id.getNextVenueID(new IDCallback.GetNextVenueIDCallback() {
+                                @Override
+                                public void getNextVenueIDCallback(int nextID) {
+                                    Venue venue = new Venue(nextID, name, sports);
+                                    venuePresenter.pushVenue(venue);
+                                    editText1.getText().clear();
+                                    editText2.getText().clear();
+                                    sports.clear();
+                                    Toast.makeText(AddVenue.this, "Added venue " + name, Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
                     }, new VenueCallback.CheckDuplicateVenueCallbackFalse() {
                         @Override
