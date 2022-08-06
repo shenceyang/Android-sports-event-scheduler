@@ -68,10 +68,16 @@ public class EventView extends AppCompatActivity {
                         joinButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Schedule s = new Schedule(event.getEventID(), userID, event.getVenueID()); // TODO change
-                                schedulePresenter.pushSchedule(s);
-                                eventList.removeAllViews();
-                                addUpcomingEvents();
+                                ID id = new ID(database);
+                                id.getNextScheduleID(new IDCallback.GetNextScheduleIDCallback() {
+                                    @Override
+                                    public void getNextScheduleIDCallback(int nextID) {
+                                        Schedule s = new Schedule(nextID, event.getEventID(), userID, event.getVenueID());
+                                        schedulePresenter.pushSchedule(s);
+                                        eventList.removeAllViews();
+                                        addUpcomingEvents();
+                                    }
+                                });
                             }
                         });
                     }
