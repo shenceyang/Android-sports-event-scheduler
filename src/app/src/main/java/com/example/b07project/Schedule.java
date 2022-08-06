@@ -1,7 +1,7 @@
 package com.example.b07project;
 
 public class Schedule {
-    public static int nextScheduleID = 1;
+//    public static int nextScheduleID = 1;
 
     private int eventID;
     private String userID;
@@ -10,12 +10,12 @@ public class Schedule {
 
     public Schedule() {}
 
-    public Schedule(int eventID, String userID, int venueID) {
+    public Schedule(int scheduleID, int eventID, String userID, int venueID) {
         this.eventID = eventID;
         this.userID = userID;
         this.venueID = venueID;
-        this.scheduleID = nextScheduleID;
-        nextScheduleID++;
+        this.scheduleID = scheduleID;
+//        nextScheduleID++;
     }
 
 
