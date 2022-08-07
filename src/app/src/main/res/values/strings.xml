@@ -31,6 +31,6 @@
     <string name="delete_event">DELETE EVENT</string>
     <string name="delete_venue">DELETE VENUE</string>
 
-
+    <string name="get_sports">Get Sports</string>
 
 </resources>

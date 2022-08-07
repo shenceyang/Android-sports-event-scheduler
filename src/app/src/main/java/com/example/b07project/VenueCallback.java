@@ -27,4 +27,7 @@ public interface VenueCallback {
     interface EventTimeNotOverlappingCallback {
         void eventTimeNotOverlappingCallback();
     }
+    interface GetVenueNamesListCallback {
+        void getVenueNamesListCallback(List<String> venueNames);
+    }
 }

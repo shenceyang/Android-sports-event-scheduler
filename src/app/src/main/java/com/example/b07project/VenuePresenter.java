@@ -1,9 +1,13 @@
 package com.example.b07project;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -251,16 +255,36 @@ public class VenuePresenter {
         });
     }
 
-    // ********** For NewEvent **********
+    public void getVenueNamesList(VenueCallback.GetVenueNamesListCallback getVenueNamesListCallback) {
+        List<String> venueNames = new ArrayList<String>();
+        this.database.child("venues").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                venueNames.clear();
+                for(DataSnapshot venue: snapshot.getChildren()) {
+                    venueNames.add(venue.child("venueName").getValue(String.class));
+                }
+                getVenueNamesListCallback.getVenueNamesListCallback(venueNames);
+            }
 
-    public void newEventSubmit(EditText eventVenue, EditText eventSport, EditText eventMaxPlayers, EditText datePicker, EditText startTimePicker, EditText endTimePicker, EventPresenter eventPresenter, Context context) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    // ********** For NewEvent **********
+    public void newEventSubmit(Spinner eventVenue, Spinner eventSport, EditText eventMaxPlayers, EditText datePicker, EditText startTimePicker, EditText endTimePicker, EventPresenter eventPresenter, Context context, String userID, SchedulePresenter schedulePresenter) {
         // Check if any field is empty
-        if(TextUtils.isEmpty(eventVenue.getText().toString())) {
-            eventVenue.setError("Venue cannot be empty");
-            return;
-        }
-        if(TextUtils.isEmpty(eventSport.getText().toString())) {
-            eventSport.setError("Sport cannot be empty");
+//        if(TextUtils.isEmpty(eventVenue.getText().toString())) {
+//            eventVenue.setError("Venue cannot be empty");
+//            return;
+//        }
+        if(eventSport.getSelectedItem().toString().equals("None")) {
+            TextView errorText = (TextView)eventSport.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);
+            errorText.setText("Use Get Sports");
             return;
         }
         if(TextUtils.isEmpty(eventMaxPlayers.getText().toString())) {
@@ -292,49 +316,92 @@ public class VenuePresenter {
         int startMin = Integer.parseInt(startArr[1]);
         int endHour = Integer.parseInt(endArr[0]);
         int endMin = Integer.parseInt(endArr[1]);
-        String sport = eventSport.getText().toString();
-        String venueName = eventVenue.getText().toString();
+        String sport = eventSport.getSelectedItem().toString();
+        String venueName = eventVenue.getSelectedItem().toString();
 
-        // Continue if venue is valid, else will show Toast saying invalid venue (from venuePresenter)
         this.getVenueIDFromName(venueName, context, new VenueCallback.GetVenueIDFromNameCallback() {
             @Override
             public void getVenueIDFromNameCallback(int venueID) {
-//                Log.d("neweventthing", "Venue Name: " + venueName + ", Venue ID: " + String.valueOf(venueID));
-                // Continue if sport is valid, else will show Toast saying invalid venue (from venuePresenter)
-                VenuePresenter.this.sportInAvailableSports(venueID, sport, context, new VenueCallback.SportInAvailableSportsCallback() {
+                id.getNextEventID(new IDCallback.GetNextEventIDCallback() {
                     @Override
-                    public void sportInAvailableSportsCallback() {
-                        // Get next event ID
-                        id.getNextEventID(new IDCallback.GetNextEventIDCallback() {
-                            @Override
-                            public void getNextEventIDCallback(int nextID) {
-                                Event newEvent = new Event(nextID, maxPlayers, day, month, year, startHour, startMin, endHour, endMin, sport, venueID);
+                    public void getNextEventIDCallback(int nextID) {
+                        Event newEvent = new Event(nextID, maxPlayers, day, month, year, startHour, startMin, endHour, endMin, sport, venueID);
 
-                                if(newEvent.isValidMaxPlayers()) {
-                                    // Check if time is valid, start time < end time
-                                    if(newEvent.isValidTime()) {
+                        if(newEvent.isValidMaxPlayers()) {
+                            // Check if time is valid, start time < end time
+                            if(newEvent.isValidTime()) {
 
-                                        // Check if time overlaps other events with same venue, sport, date
-                                        eventTimeNotOverlapping(newEvent, context, new VenueCallback.EventTimeNotOverlappingCallback() {
+                                // Check if time overlaps other events with same venue, sport, date
+                                eventTimeNotOverlapping(newEvent, context, new VenueCallback.EventTimeNotOverlappingCallback() {
+                                    @Override
+                                    public void eventTimeNotOverlappingCallback() {
+                                        eventPresenter.pushEvent(newEvent);
+                                        // Join current user to event
+                                        id.getNextScheduleID(new IDCallback.GetNextScheduleIDCallback() {
                                             @Override
-                                            public void eventTimeNotOverlappingCallback() {
-                                                eventPresenter.pushEvent(newEvent);
+                                            public void getNextScheduleIDCallback(int nextID) {
+                                                Schedule newSchedule = new Schedule(nextID, newEvent.getEventID(), userID, venueID);
+                                                schedulePresenter.pushSchedule(newSchedule);
+                                                Toast.makeText(context, "Event successfully added and joined", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(context, Customer_center.class);
+                                                context.startActivity(intent);
                                             }
                                         });
                                     }
-                                    else {
-                                        Toast.makeText(context, "Invalid Time", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else {
-                                    Toast.makeText(context, "Invalid Max Players", Toast.LENGTH_SHORT).show();
-                                }
-                            };
-                        });
+                                });
+                            }
+                            else {
+                                Toast.makeText(context, "Invalid Time", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else {
+                            Toast.makeText(context, "Invalid Max Players", Toast.LENGTH_SHORT).show();
+                        }
                     };
                 });
-            };
+            }
         });
+
+        // Continue if venue is valid, else will show Toast saying invalid venue (from venuePresenter)
+//        this.getVenueIDFromName(venueName, context, new VenueCallback.GetVenueIDFromNameCallback() {
+//            @Override
+//            public void getVenueIDFromNameCallback(int venueID) {
+////                Log.d("neweventthing", "Venue Name: " + venueName + ", Venue ID: " + String.valueOf(venueID));
+//                // Continue if sport is valid, else will show Toast saying invalid venue (from venuePresenter)
+//                VenuePresenter.this.sportInAvailableSports(venueID, sport, context, new VenueCallback.SportInAvailableSportsCallback() {
+//                    @Override
+//                    public void sportInAvailableSportsCallback() {
+//                        // Get next event ID
+//                        id.getNextEventID(new IDCallback.GetNextEventIDCallback() {
+//                            @Override
+//                            public void getNextEventIDCallback(int nextID) {
+//                                Event newEvent = new Event(nextID, maxPlayers, day, month, year, startHour, startMin, endHour, endMin, sport, venueID);
+//
+//                                if(newEvent.isValidMaxPlayers()) {
+//                                    // Check if time is valid, start time < end time
+//                                    if(newEvent.isValidTime()) {
+//
+//                                        // Check if time overlaps other events with same venue, sport, date
+//                                        eventTimeNotOverlapping(newEvent, context, new VenueCallback.EventTimeNotOverlappingCallback() {
+//                                            @Override
+//                                            public void eventTimeNotOverlappingCallback() {
+//                                                eventPresenter.pushEvent(newEvent);
+//                                            }
+//                                        });
+//                                    }
+//                                    else {
+//                                        Toast.makeText(context, "Invalid Time", Toast.LENGTH_SHORT).show();
+//                                    }
+//                                }
+//                                else {
+//                                    Toast.makeText(context, "Invalid Max Players", Toast.LENGTH_SHORT).show();
+//                                }
+//                            };
+//                        });
+//                    };
+//                });
+//            };
+//        });
     }
 
     public void getAllVenues(VenueCallback.GetAllVenuesCallback venueCallback) {
@@ -369,6 +436,26 @@ public class VenuePresenter {
                     availableSports.add(toAdd);
                 }
                 sportsCallback.getAvailableSportsCallback(availableSports);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public void getAvailableSports(int venueID, VenueCallback.GetAvailableSportsCallback getAvailableSportsCallback) {
+        List<String> availableSports = new ArrayList<String>();
+
+        database.child("venues").child(String.valueOf(venueID)).child("availableSports").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                availableSports.clear();
+                System.out.println(snapshot.getChildren());
+                for (DataSnapshot sport: snapshot.getChildren()) {
+                    String toAdd = sport.getValue(String.class);
+                    availableSports.add(toAdd);
+                }
+                getAvailableSportsCallback.getAvailableSportsCallback(availableSports);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

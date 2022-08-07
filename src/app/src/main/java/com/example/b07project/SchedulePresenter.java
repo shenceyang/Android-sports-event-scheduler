@@ -10,12 +10,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SchedulePresenter {
 
-    private ScheduleView sView;
     private EventPresenter eventPresenter;
     private DatabaseReference database;
 
-    public SchedulePresenter(ScheduleView sView, EventPresenter eventPresenter, DatabaseReference database) {
-        this.sView = sView;
+    public SchedulePresenter(EventPresenter eventPresenter, DatabaseReference database) {
         this.eventPresenter = eventPresenter;
         this.database = database;
     }
