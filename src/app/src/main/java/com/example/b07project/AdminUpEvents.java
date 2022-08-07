@@ -104,6 +104,9 @@ public class AdminUpEvents extends AppCompatActivity {
 
         Button searchButton = (Button) findViewById(R.id.button4);
         Button backButton = (Button) findViewById(R.id.button6);
+        Button deleteEventButton = (Button) findViewById(R.id.button7);
+        Button deleteVenueButton = (Button) findViewById(R.id.button8);
+
         EditText editText = (EditText) findViewById(R.id.editTextTextPersonName3);
 
         backButton.setOnClickListener(new View.OnClickListener(){

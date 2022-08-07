@@ -28,8 +28,10 @@
     <string name="available_sports">Available Sports:</string>
     <string name="events">Events</string>
 
+    <string name="delete_event">DELETE EVENT</string>
+    <string name="delete_venue">DELETE VENUE</string>
+
     <string name="get_sports">Get Sports</string>
     <string name="status">Status:</string>
-
 
 </resources>
