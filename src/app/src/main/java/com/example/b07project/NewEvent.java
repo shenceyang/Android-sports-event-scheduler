@@ -138,7 +138,7 @@ public class NewEvent extends AppCompatActivity {
 
         this.eventVenue = (Spinner) findViewById(R.id.venue_spinner);
         this.eventSport = (Spinner) findViewById(R.id.sport_spinner);
-        this.getSportsButton = (Button) findViewById(R.id.get_sports);
+        //this.getSportsButton = (Button) findViewById(R.id.get_sports);
         this.eventMaxPlayers = (EditText) findViewById(R.id.max_players_prompt);
         this.datePicker = (EditText) findViewById(R.id.date_picker);
         this.startTimePicker = (EditText) findViewById(R.id.start_time_picker);

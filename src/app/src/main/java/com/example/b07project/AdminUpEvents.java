@@ -49,6 +49,8 @@ public class AdminUpEvents extends AppCompatActivity {
                         TextView eventEnd = newEvent.findViewById(R.id.eventEndTimeAdmin);
                         TextView eventJoinedPlayers = newEvent.findViewById(R.id.eventJoinedPlayersAdmin);
                         TextView eventMaxPlayers = newEvent.findViewById(R.id.eventMaxPlayersAdmin);
+                        Button deleteEventButton = newEvent.findViewById(R.id.button7);
+                        Button deleteVenueButton = newEvent.findViewById(R.id.button8);
 
                         eventVenue.setText("Venue: " + venueName);
                         eventDate.setText("Date: " + e.getDay() + "/" + e.getMonth());
@@ -59,9 +61,6 @@ public class AdminUpEvents extends AppCompatActivity {
                         eventMaxPlayers.setText("Max Players: " + e.getMaxPlayers());
 
                         eventList.addView(newEvent);
-
-                        Button deleteEventButton = (Button) findViewById(R.id.button7);
-                        Button deleteVenueButton = (Button) findViewById(R.id.button8);
 
                         deleteEventButton.setOnClickListener(new View.OnClickListener(){
                             @Override
@@ -81,7 +80,6 @@ public class AdminUpEvents extends AppCompatActivity {
                             }
                         });
                     }
-
                 }
                 if(!hasEvent){
                     Toast.makeText(AdminUpEvents.this, "No upcoming events for " + venueName, Toast.LENGTH_SHORT).show();
