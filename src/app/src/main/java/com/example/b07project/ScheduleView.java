@@ -34,11 +34,7 @@ public class ScheduleView extends AppCompatActivity {
                     TextView venueText = (TextView) newEvent.findViewById(R.id.eventVenue);
                     TextView dateText = (TextView) newEvent.findViewById(R.id.eventDate);
                     TextView sportText = (TextView) newEvent.findViewById(R.id.eventSport);
-                    TextView startText = (TextView) newEvent.findViewById(R.id.eventStartTime);
-                    TextView endText = (TextView) newEvent.findViewById(R.id.eventEndTime);
-                    TextView joinedPlayersText = (TextView) newEvent.findViewById(R.id.eventJoinedPlayers);
-                    TextView maxPlayersText = (TextView) newEvent.findViewById(R.id.eventMaxPlayers);
-                    Button joinButton = (Button) newEvent.findViewById(R.id.joinButton);
+
 
                     venuePresenter.getVenue(event.getVenueID(), new VenueCallback.GetVenueCallback() {
                         @Override
@@ -48,40 +44,15 @@ public class ScheduleView extends AppCompatActivity {
                     });
                     dateText.setText("Date: " + event.getDay() + "/" + event.getMonth() + "/" + event.getYear());
                     sportText.setText("Sport: " + event.getSport());
-                    startText.setText("Start: " + event.getStartHour() + ":" + String.format("%02d", event.getStartMin()));
-                    endText.setText("End: " + event.getEndHour() + ":" + String.format("%02d", event.getEndMin()));
-                    joinedPlayersText.setText("Players joined: " + event.getCurrPlayers());
-                    maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
+
 
                     // Check if current user already joined event
                     schedulePresenter.isScheduled(userID, event.getEventID(), new ScheduleCallback.IsScheduledCallback() {
                         @Override
                         public void isScheduledCallback() {
-                            joinButton.setEnabled(false);
                         }
                     });
 
-                    if(event.getMaxPlayers() == event.getCurrPlayers()) {
-                        joinButton.setEnabled(false);
-                    }
-                    else {
-                        joinButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                ID id = new ID(database);
-                                id.getNextScheduleID(new IDCallback.GetNextScheduleIDCallback() {
-                                    @Override
-                                    public void getNextScheduleIDCallback(int nextID) {
-                                        Schedule s = new Schedule(nextID, event.getEventID(), userID, event.getVenueID());
-                                        schedulePresenter.pushSchedule(s);
-                                        eventList.removeAllViews();
-                                        addUpcomingEvents();
-                                    }
-                                });
-                            }
-                        });
-                    }
-                    eventList.addView(newEvent);
                 }
             }
         });
