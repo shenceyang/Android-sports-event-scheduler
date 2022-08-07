@@ -32,6 +32,7 @@ public class AdminUpEvents extends AppCompatActivity {
             @Override
             public void getSortedListEventsCallback(List<Event> sortedEvents) {
                 LinearLayout eventList = (LinearLayout) findViewById(R.id.eventListAdmin);
+
                 boolean hasEvent = false;
 
                 for (Event e:sortedEvents) {
@@ -58,6 +59,27 @@ public class AdminUpEvents extends AppCompatActivity {
                         eventMaxPlayers.setText("Max Players: " + e.getMaxPlayers());
 
                         eventList.addView(newEvent);
+
+                        Button deleteEventButton = (Button) findViewById(R.id.button7);
+                        Button deleteVenueButton = (Button) findViewById(R.id.button8);
+
+                        deleteEventButton.setOnClickListener(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View view){
+                                Toast.makeText(AdminUpEvents.this, "Deleting event " + e.getEventID(), Toast.LENGTH_SHORT).show();
+                                eventList.removeView(newEvent);
+                                //eventPresenter.removeEvent(e.getEventID());
+                            }
+                        });
+
+                        deleteVenueButton.setOnClickListener(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View view){
+                                Toast.makeText(AdminUpEvents.this, "Deleting venue " + venueName, Toast.LENGTH_SHORT).show();
+                                eventList.removeAllViews();
+                                //venuePresenter.removeVenue(e.getVenueID());
+                            }
+                        });
                     }
 
                 }
@@ -78,16 +100,18 @@ public class AdminUpEvents extends AppCompatActivity {
                 @Override
                 public void getAllVenuesCallback(List<Venue> allVenues) {
                     int venueID = -1;
-                    for (Venue v : allVenues) {
+                    for (Venue v:allVenues) {
                         if (venueName.equals(v.getVenueName())) {
                             venueID = v.getVenueID();
                             if (venueID != -1) {
                                 upcomingEvents(venueName, venueID);
-                            } else {
-                                Toast.makeText(AdminUpEvents.this, "Venue " + venueName + " does not exist", Toast.LENGTH_SHORT).show();
                             }
                             break;
                         }
+                    }
+                    if (venueID == -1){
+                        Toast.makeText(AdminUpEvents.this, "Venue " + venueName + " does not exist", Toast.LENGTH_SHORT).show();
+                        venueSearch.remove(venueName);
                     }
                 }
             });
@@ -104,8 +128,6 @@ public class AdminUpEvents extends AppCompatActivity {
 
         Button searchButton = (Button) findViewById(R.id.button4);
         Button backButton = (Button) findViewById(R.id.button6);
-        Button deleteEventButton = (Button) findViewById(R.id.button7);
-        Button deleteVenueButton = (Button) findViewById(R.id.button8);
 
         EditText editText = (EditText) findViewById(R.id.editTextTextPersonName3);
 
