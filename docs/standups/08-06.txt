@@ -11,16 +11,16 @@ group members to try and finish everything in order to start testing the whole a
 Any impediments or stumbling blocks?
 Having to juggle other coursework at the same time.
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+More work on user story 7, fixed various smaller problems
 
 What are you planning on doing today?
-	- Put points here ...
+Add buttons for deleting the event and entire venue
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Having work for other classes due soon
 
 Name: 
 
