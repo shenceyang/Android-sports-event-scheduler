@@ -26,6 +26,7 @@ public class EventView extends AppCompatActivity {
             @Override
             public void getSortedListEventsCallback(List<Event> sortedEvents) {
                 LinearLayout eventList = (LinearLayout) findViewById(R.id.eventList);
+                eventList.removeAllViews();
                 for(Event event: sortedEvents) {
 //                    Log.d("sortedevents", String.valueOf(event.getEventID()));
                     LayoutInflater inflater = getLayoutInflater();
@@ -123,8 +124,8 @@ public class EventView extends AppCompatActivity {
         setContentView(R.layout.upcoming_events);
 
         this.eventPresenter = new EventPresenter(this.database);
-        this.venuePresenter = new VenuePresenter(this.database); // TODO Change VenueView later
-        this.schedulePresenter = new SchedulePresenter(this.eventPresenter, this.database); // TODO change
+        this.venuePresenter = new VenuePresenter(this.database);
+        this.schedulePresenter = new SchedulePresenter(this.eventPresenter, this.database);
         this.userID = getIntent().getStringExtra("userID");
         addUpcomingEvents();
     }
