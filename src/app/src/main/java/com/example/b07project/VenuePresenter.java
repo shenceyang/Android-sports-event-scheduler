@@ -253,7 +253,7 @@ public class VenuePresenter {
 
     // ********** For NewEvent **********
 
-    public void newEventSubmit(EditText eventVenue, EditText eventSport, EditText eventMaxPlayers, EditText datePicker, EditText startTimePicker, EditText endTimePicker, EventPresenter eventPresenter, Context context) {
+    public void newEventSubmit(EditText eventVenue, EditText eventSport, EditText eventMaxPlayers, EditText datePicker, EditText startTimePicker, EditText endTimePicker, EventPresenter eventPresenter, Context context, String userID, SchedulePresenter schedulePresenter) {
         // Check if any field is empty
         if(TextUtils.isEmpty(eventVenue.getText().toString())) {
             eventVenue.setError("Venue cannot be empty");
@@ -318,7 +318,17 @@ public class VenuePresenter {
                                         eventTimeNotOverlapping(newEvent, context, new VenueCallback.EventTimeNotOverlappingCallback() {
                                             @Override
                                             public void eventTimeNotOverlappingCallback() {
+                                                // Add event
                                                 eventPresenter.pushEvent(newEvent);
+                                                // Join current user to event
+                                                id.getNextScheduleID(new IDCallback.GetNextScheduleIDCallback() {
+                                                    @Override
+                                                    public void getNextScheduleIDCallback(int nextID) {
+                                                        Schedule newSchedule = new Schedule(nextID, newEvent.getEventID(), userID, venueID);
+                                                        schedulePresenter.pushSchedule(newSchedule);
+                                                    }
+                                                });
+
                                             }
                                         });
                                     }

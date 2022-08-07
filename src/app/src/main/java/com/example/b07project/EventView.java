@@ -124,7 +124,7 @@ public class EventView extends AppCompatActivity {
 
         this.eventPresenter = new EventPresenter(this.database);
         this.venuePresenter = new VenuePresenter(this.database); // TODO Change VenueView later
-        this.schedulePresenter = new SchedulePresenter(new ScheduleView(), this.eventPresenter, this.database); // TODO change
+        this.schedulePresenter = new SchedulePresenter(this.eventPresenter, this.database); // TODO change
         this.userID = getIntent().getStringExtra("userID");
         addUpcomingEvents();
     }

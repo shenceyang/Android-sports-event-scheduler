@@ -24,7 +24,9 @@ import java.util.Locale;
 public class NewEvent extends AppCompatActivity {
     private EventPresenter eventPresenter;
     private VenuePresenter venuePresenter;
+    private SchedulePresenter schedulePresenter;
     private DatabaseReference database = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
+    private String userID;
 
     final Calendar calendar = Calendar.getInstance();
     private EditText eventVenue;
@@ -119,6 +121,8 @@ public class NewEvent extends AppCompatActivity {
 
         this.eventPresenter = new EventPresenter(this.database);
         this.venuePresenter = new VenuePresenter(this.database);
+        this.schedulePresenter = new SchedulePresenter(eventPresenter, this.database);
+        this.userID = getIntent().getStringExtra("userID");
 
         this.eventVenue = (EditText) findViewById(R.id.venue_prompt);
         this.eventSport = (EditText) findViewById(R.id.sport_prompt);
@@ -136,7 +140,7 @@ public class NewEvent extends AppCompatActivity {
         this.submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                venuePresenter.newEventSubmit(eventVenue, eventSport, eventMaxPlayers, datePicker, startTimePicker, endTimePicker, eventPresenter, NewEvent.this);
+                venuePresenter.newEventSubmit(eventVenue, eventSport, eventMaxPlayers, datePicker, startTimePicker, endTimePicker, eventPresenter, NewEvent.this, userID, schedulePresenter);
             }
         });
     }
