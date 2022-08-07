@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +26,12 @@ public class EventView extends AppCompatActivity {
         this.eventPresenter.getSortedListEvents(new EventCallback.GetSortedListEventsCallback() {
             @Override
             public void getSortedListEventsCallback(List<Event> sortedEvents) {
+                // If no events, just exit
+                if(sortedEvents.isEmpty()) {
+                    Toast.makeText(EventView.this, "No Events", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+
                 LinearLayout eventList = (LinearLayout) findViewById(R.id.eventList);
                 eventList.removeAllViews();
                 for(Event event: sortedEvents) {
