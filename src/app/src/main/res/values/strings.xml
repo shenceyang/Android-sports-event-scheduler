@@ -26,5 +26,7 @@
     <string name="event_date_prompt">Date</string>
     <string name="search_prompt">SEARCH</string>
 
+    <string name="get_sports">Get Sports</string>
+
 
 </resources>

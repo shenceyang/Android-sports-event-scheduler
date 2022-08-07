@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -32,6 +33,7 @@ public class NewEvent extends AppCompatActivity {
     final Calendar calendar = Calendar.getInstance();
     private Spinner eventVenue;
     private Spinner eventSport;
+    private Button getSportsButton;
     private EditText eventMaxPlayers;
     private EditText datePicker;
     private EditText startTimePicker;
@@ -110,8 +112,14 @@ public class NewEvent extends AppCompatActivity {
         });
     }
 
-    // ********** Submit Button **********
-
+    // ********** Sport Spinner **********
+    private void initSportSpinner() {
+        List<String> initSports = new ArrayList<String>();
+        initSports.add("None");
+        ArrayAdapter<String> initSportsAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, initSports);
+        initSportsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        eventSport.setAdapter(initSportsAdapter);
+    }
 
     // ********** Main **********
 
@@ -125,6 +133,7 @@ public class NewEvent extends AppCompatActivity {
 
         this.eventVenue = (Spinner) findViewById(R.id.venue_spinner);
         this.eventSport = (Spinner) findViewById(R.id.sport_spinner);
+        this.getSportsButton = (Button) findViewById(R.id.get_sports);
         this.eventMaxPlayers = (EditText) findViewById(R.id.max_players_prompt);
         this.datePicker = (EditText) findViewById(R.id.date_picker);
         this.startTimePicker = (EditText) findViewById(R.id.start_time_picker);
@@ -138,8 +147,28 @@ public class NewEvent extends AppCompatActivity {
                 ArrayAdapter<String> venueAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, venueNames);
                 venueAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 eventVenue.setAdapter(venueAdapter);
+            }
+        });
 
-                venuePresenter.get
+        initSportSpinner();
+
+        this.getSportsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String venueName = eventVenue.getSelectedItem().toString();
+                venuePresenter.getVenueIDFromName(venueName, NewEvent.this, new VenueCallback.GetVenueIDFromNameCallback() {
+                    @Override
+                    public void getVenueIDFromNameCallback(int venueID) {
+                        venuePresenter.getAvailableSports(venueID, new VenueCallback.GetAvailableSportsCallback() {
+                            @Override
+                            public void getAvailableSportsCallback(List<String> sports) {
+                                ArrayAdapter<String> sportsAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, sports);
+                                sportsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                eventSport.setAdapter(sportsAdapter);
+                            }
+                        });
+                    }
+                });
             }
         });
 
@@ -148,11 +177,11 @@ public class NewEvent extends AppCompatActivity {
         selectTimeListener(this.endTimePicker);
 
         // On Submit Button Click
-//        this.submitButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                venuePresenter.newEventSubmit(eventVenue, eventSport, eventMaxPlayers, datePicker, startTimePicker, endTimePicker, eventPresenter, NewEvent.this);
-//            }
-//        });
+        this.submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                venuePresenter.newEventSubmit(eventVenue, eventSport, eventMaxPlayers, datePicker, startTimePicker, endTimePicker, eventPresenter, NewEvent.this);
+            }
+        });
     }
 }
