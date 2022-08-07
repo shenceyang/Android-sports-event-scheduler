@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Intent intent = new Intent(this, Schedule.class);
+        Intent intent = new Intent(this, ScheduleView.class);
         startActivity(intent);
 
 //        eventPresenter.getSortedListEvents(new EventCallback.GetSortedListEventsCallback() {

@@ -15,7 +15,6 @@ public class Schedule {
         this.userID = userID;
         this.venueID = venueID;
         this.scheduleID = scheduleID;
-//        nextScheduleID++;
     }
 
 
