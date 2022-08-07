@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -251,18 +252,36 @@ public class VenuePresenter {
         });
     }
 
+    public void getVenueNamesList(VenueCallback.GetVenueNamesListCallback getVenueNamesListCallback) {
+        List<String> venueNames = new ArrayList<String>();
+        this.database.child("venues").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                venueNames.clear();
+                for(DataSnapshot venue: snapshot.getChildren()) {
+                    venueNames.add(venue.child("venueName").getValue(String.class));
+                }
+                getVenueNamesListCallback.getVenueNamesListCallback(venueNames);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
     // ********** For NewEvent **********
 
-    public void newEventSubmit(EditText eventVenue, EditText eventSport, EditText eventMaxPlayers, EditText datePicker, EditText startTimePicker, EditText endTimePicker, EventPresenter eventPresenter, Context context) {
+    public void newEventSubmit(Spinner eventVenue, Spinner eventSport, EditText eventMaxPlayers, EditText datePicker, EditText startTimePicker, EditText endTimePicker, EventPresenter eventPresenter, Context context) {
         // Check if any field is empty
-        if(TextUtils.isEmpty(eventVenue.getText().toString())) {
-            eventVenue.setError("Venue cannot be empty");
-            return;
-        }
-        if(TextUtils.isEmpty(eventSport.getText().toString())) {
-            eventSport.setError("Sport cannot be empty");
-            return;
-        }
+//        if(TextUtils.isEmpty(eventVenue.getText().toString())) {
+//            eventVenue.setError("Venue cannot be empty");
+//            return;
+//        }
+//        if(TextUtils.isEmpty(eventSport.getText().toString())) {
+//            eventSport.setError("Sport cannot be empty");
+//            return;
+//        }
         if(TextUtils.isEmpty(eventMaxPlayers.getText().toString())) {
             eventMaxPlayers.setError("Max Players cannot be empty");
             return;

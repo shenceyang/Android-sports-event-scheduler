@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class NewEvent extends AppCompatActivity {
@@ -27,8 +30,8 @@ public class NewEvent extends AppCompatActivity {
     private DatabaseReference database = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
 
     final Calendar calendar = Calendar.getInstance();
-    private EditText eventVenue;
-    private EditText eventSport;
+    private Spinner eventVenue;
+    private Spinner eventSport;
     private EditText eventMaxPlayers;
     private EditText datePicker;
     private EditText startTimePicker;
@@ -120,24 +123,36 @@ public class NewEvent extends AppCompatActivity {
         this.eventPresenter = new EventPresenter(this.database);
         this.venuePresenter = new VenuePresenter(this.database);
 
-        this.eventVenue = (EditText) findViewById(R.id.venue_prompt);
-        this.eventSport = (EditText) findViewById(R.id.sport_prompt);
+        this.eventVenue = (Spinner) findViewById(R.id.venue_spinner);
+        this.eventSport = (Spinner) findViewById(R.id.sport_spinner);
         this.eventMaxPlayers = (EditText) findViewById(R.id.max_players_prompt);
         this.datePicker = (EditText) findViewById(R.id.date_picker);
         this.startTimePicker = (EditText) findViewById(R.id.start_time_picker);
         this.endTimePicker = (EditText) findViewById(R.id.end_time_picker);
         this.submitButton = (Button) findViewById(R.id.new_event_submit);
 
+        // Get venue names List
+        venuePresenter.getVenueNamesList(new VenueCallback.GetVenueNamesListCallback() {
+            @Override
+            public void getVenueNamesListCallback(List<String> venueNames) {
+                ArrayAdapter<String> venueAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, venueNames);
+                venueAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                eventVenue.setAdapter(venueAdapter);
+
+                venuePresenter.get
+            }
+        });
+
         selectDateListener();
         selectTimeListener(this.startTimePicker);
         selectTimeListener(this.endTimePicker);
 
         // On Submit Button Click
-        this.submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                venuePresenter.newEventSubmit(eventVenue, eventSport, eventMaxPlayers, datePicker, startTimePicker, endTimePicker, eventPresenter, NewEvent.this);
-            }
-        });
+//        this.submitButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                venuePresenter.newEventSubmit(eventVenue, eventSport, eventMaxPlayers, datePicker, startTimePicker, endTimePicker, eventPresenter, NewEvent.this);
+//            }
+//        });
     }
 }
