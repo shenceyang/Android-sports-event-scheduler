@@ -1,0 +1,56 @@
+Name: Chun Kang Lu	 
+
+What have you done since yesterday?
+Changed New Event page to use spinners/drop-down menus, as well as trying to find
+and fix any bugs that stem from edge cases.
+
+What are you planning on doing today?
+Improve drop-down menu system and test more of my compenents while waiting and assisting other
+group members to try and finish everything in order to start testing the whole app.
+
+Any impediments or stumbling blocks?
+Having to juggle other coursework at the same time.
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
