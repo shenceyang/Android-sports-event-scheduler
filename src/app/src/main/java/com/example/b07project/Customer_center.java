@@ -21,6 +21,7 @@ public class Customer_center extends AppCompatActivity {
         MaterialButton bookbtn = (MaterialButton) findViewById(R.id.bookbtn);
         MaterialButton quitbtn = (MaterialButton) findViewById(R.id.quitbtn);
         MaterialButton addEventbtn = (MaterialButton) findViewById(R.id.addEventbtn);
+        MaterialButton seeVenuebtn = (MaterialButton) findViewById(R.id.seeVenuebtn);
 
         schedulebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +59,16 @@ public class Customer_center extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Customer_center.this,  login_page.class);
                 startActivity(intent);
+            }
+        });
+
+        seeVenuebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // pass userID
+                Intent intent = new Intent(Customer_center.this,  VenueView.class);
+                startActivity(intent);
+
             }
         });
 

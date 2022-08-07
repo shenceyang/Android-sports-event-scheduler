@@ -3,6 +3,7 @@ package com.example.b07project;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,15 +33,27 @@ public class login_page extends AppCompatActivity {
             public void onClick(View view) {
                 // TODO check if empty and set error (copy from signup_page)
 
-                loginPresenter.authenticateAdmin(username.getText().toString(), password.getText().toString(), login_page.this, new LoginCallback.AuthenticateAdminCallback() {
-                    @Override
-                    public void authenticateAdminCallback() {
-                        Toast.makeText(login_page.this,"Login successful",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(login_page.this,  Admin_center.class);
-                        intent.putExtra("userID", "admin");
-                        startActivity(intent);
-                    }
-                });
+                if(TextUtils.isEmpty(username.getText().toString())) {
+                    username.setError("Username cannot be empty");
+                    return;
+                }
+
+                else if(TextUtils.isEmpty(password.getText().toString())) {
+                    password.setError("Password cannot be empty");
+                    return;
+                }
+
+                else {
+                    loginPresenter.authenticateAdmin(username.getText().toString(), password.getText().toString(), login_page.this, new LoginCallback.AuthenticateAdminCallback() {
+                        @Override
+                        public void authenticateAdminCallback() {
+                            Toast.makeText(login_page.this, "Login successful", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(login_page.this, Admin_center.class);
+                            intent.putExtra("userID", "admin");
+                            startActivity(intent);
+                        }
+                    });
+                }
 
                 // Login Authentication
 //                if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){

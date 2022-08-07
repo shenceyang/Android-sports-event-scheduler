@@ -3,6 +3,7 @@ package com.example.b07project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,23 +31,35 @@ public class signup_page extends AppCompatActivity {
             public void onClick(View view) {
                 // TODO check if empty and set error
 
-                signupPresenter.checkDuplicateAdmin(username.getText().toString(), signup_page.this, new SignupCallback.CheckDuplicateAdminCallback() {
-                    @Override
-                    public void checkDuplicateAdminCallback() {
-                        // Runs if not admin
-                        // Check for existing user with same username
-                        // Will show Toast if duplicate
-                        signupPresenter.checkDuplicateUser(username.getText().toString(), signup_page.this, new SignupCallback.CheckDuplicateUserCallback() {
-                            @Override
-                            public void checkDuplicateUserCallback() {
-                                Customer c = new Customer(username.getText().toString(), password.getText().toString());
-                                DatabaseReference d = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
-                                CustomerPresenter customerPresenter = new CustomerPresenter(new CustomerView(), d);
-                                customerPresenter.pushCustomer(c);
-                            }
-                        });
-                    }
-                });
+                if(TextUtils.isEmpty(username.getText().toString())) {
+                    username.setError("Username cannot be empty");
+                    return;
+                }
+
+                else if(TextUtils.isEmpty(password.getText().toString())) {
+                    password.setError("Password cannot be empty");
+                    return;
+                }
+
+                else {
+                    signupPresenter.checkDuplicateAdmin(username.getText().toString(), signup_page.this, new SignupCallback.CheckDuplicateAdminCallback() {
+                        @Override
+                        public void checkDuplicateAdminCallback() {
+                            // Runs if not admin
+                            // Check for existing user with same username
+                            // Will show Toast if duplicate
+                            signupPresenter.checkDuplicateUser(username.getText().toString(), signup_page.this, new SignupCallback.CheckDuplicateUserCallback() {
+                                @Override
+                                public void checkDuplicateUserCallback() {
+                                    Customer c = new Customer(username.getText().toString(), password.getText().toString());
+                                    DatabaseReference d = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
+                                    CustomerPresenter customerPresenter = new CustomerPresenter(new CustomerView(), d);
+                                    customerPresenter.pushCustomer(c);
+                                }
+                            });
+                        }
+                    });
+                }
             }
         });
 
