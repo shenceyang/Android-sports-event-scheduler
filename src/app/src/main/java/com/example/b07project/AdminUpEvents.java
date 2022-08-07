@@ -67,7 +67,7 @@ public class AdminUpEvents extends AppCompatActivity {
                             public void onClick(View view){
                                 Toast.makeText(AdminUpEvents.this, "Deleting event " + e.getEventID(), Toast.LENGTH_SHORT).show();
                                 eventList.removeView(newEvent);
-                                //eventPresenter.removeEvent(e.getEventID());
+                                eventPresenter.removeEvent(e.getEventID());
                             }
                         });
 
@@ -76,7 +76,7 @@ public class AdminUpEvents extends AppCompatActivity {
                             public void onClick(View view){
                                 Toast.makeText(AdminUpEvents.this, "Deleting venue " + venueName, Toast.LENGTH_SHORT).show();
                                 eventList.removeAllViews();
-                                //venuePresenter.removeVenue(e.getVenueID());
+                                venuePresenter.removeVenue(e.getVenueID());
                             }
                         });
 
