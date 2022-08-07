@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -148,33 +149,65 @@ public class NewEvent extends AppCompatActivity {
         venuePresenter.getVenueNamesList(new VenueCallback.GetVenueNamesListCallback() {
             @Override
             public void getVenueNamesListCallback(List<String> venueNames) {
+                // If no venues, just exit
+                if(venueNames.isEmpty()) {
+                    Toast.makeText(NewEvent.this, "No venues, cannot create events", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+
                 ArrayAdapter<String> venueAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, venueNames);
                 venueAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 eventVenue.setAdapter(venueAdapter);
-            }
-        });
 
-        initSportSpinner();
-
-        this.getSportsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String venueName = eventVenue.getSelectedItem().toString();
-                venuePresenter.getVenueIDFromName(venueName, NewEvent.this, new VenueCallback.GetVenueIDFromNameCallback() {
+                eventVenue.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void getVenueIDFromNameCallback(int venueID) {
-                        venuePresenter.getAvailableSports(venueID, new VenueCallback.GetAvailableSportsCallback() {
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long itemId) {
+                        String venueName = eventVenue.getSelectedItem().toString();
+                        venuePresenter.getVenueIDFromName(venueName, NewEvent.this, new VenueCallback.GetVenueIDFromNameCallback() {
                             @Override
-                            public void getAvailableSportsCallback(List<String> sports) {
-                                ArrayAdapter<String> sportsAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, sports);
-                                sportsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                                eventSport.setAdapter(sportsAdapter);
+                            public void getVenueIDFromNameCallback(int venueID) {
+                                venuePresenter.getAvailableSports(venueID, new VenueCallback.GetAvailableSportsCallback() {
+                                    @Override
+                                    public void getAvailableSportsCallback(List<String> sports) {
+                                        ArrayAdapter<String> sportsAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, sports);
+                                        sportsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                        eventSport.setAdapter(sportsAdapter);
+                                    }
+                                });
                             }
                         });
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
                     }
                 });
             }
         });
+
+
+
+//        initSportSpinner();
+//
+//        this.getSportsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String venueName = eventVenue.getSelectedItem().toString();
+//                venuePresenter.getVenueIDFromName(venueName, NewEvent.this, new VenueCallback.GetVenueIDFromNameCallback() {
+//                    @Override
+//                    public void getVenueIDFromNameCallback(int venueID) {
+//                        venuePresenter.getAvailableSports(venueID, new VenueCallback.GetAvailableSportsCallback() {
+//                            @Override
+//                            public void getAvailableSportsCallback(List<String> sports) {
+//                                ArrayAdapter<String> sportsAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, sports);
+//                                sportsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                                eventSport.setAdapter(sportsAdapter);
+//                            }
+//                        });
+//                    }
+//                });
+//            }
+//        });
 
         selectDateListener();
         selectTimeListener(this.startTimePicker);

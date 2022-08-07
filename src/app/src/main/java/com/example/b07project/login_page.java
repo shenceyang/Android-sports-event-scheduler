@@ -50,6 +50,8 @@ public class login_page extends AppCompatActivity {
                             Toast.makeText(login_page.this, "Login successful", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(login_page.this, Admin_center.class);
                             intent.putExtra("userID", "admin");
+                            username.setText("");
+                            password.setText("");
                             startActivity(intent);
                         }
                     });
@@ -68,8 +70,11 @@ public class login_page extends AppCompatActivity {
                 loginPresenter.authenticateUser(username.getText().toString(), password.getText().toString(), login_page.this, new LoginCallback.AuthenticateUserCallback() {
                     @Override
                     public void authenticateUserCallback() {
+                        Toast.makeText(login_page.this, "Login successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(login_page.this,  Customer_center.class);
                         intent.putExtra("userID", username.getText().toString());
+                        username.setText("");
+                        password.setText("");
                         startActivity(intent);
                     }
                 });

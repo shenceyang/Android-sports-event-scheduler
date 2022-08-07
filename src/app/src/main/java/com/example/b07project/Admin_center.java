@@ -39,8 +39,7 @@ public class Admin_center extends AppCompatActivity {
         quitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Admin_center.this,  login_page.class);
-                startActivity(intent);
+                finish();
 
             }
         });
