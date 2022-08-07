@@ -1,6 +1,7 @@
 package com.example.b07project;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
@@ -341,6 +342,9 @@ public class VenuePresenter {
                                             public void getNextScheduleIDCallback(int nextID) {
                                                 Schedule newSchedule = new Schedule(nextID, newEvent.getEventID(), userID, venueID);
                                                 schedulePresenter.pushSchedule(newSchedule);
+                                                Toast.makeText(context, "Event successfully added and joined", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(context, Customer_center.class);
+                                                context.startActivity(intent);
                                             }
                                         });
                                     }
