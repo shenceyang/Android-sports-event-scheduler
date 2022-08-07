@@ -32,5 +32,7 @@
     <string name="delete_venue">DELETE VENUE</string>
 
     <string name="get_sports">Get Sports</string>
+    <string name="status">Status:</string>
+    <string name="event">event</string>
 
 </resources>
