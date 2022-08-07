@@ -80,6 +80,7 @@ public class AdminUpEvents extends AppCompatActivity {
                                 //venuePresenter.removeVenue(e.getVenueID());
                             }
                         });
+
                     }
 
                 }
