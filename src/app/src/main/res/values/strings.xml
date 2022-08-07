@@ -28,5 +28,9 @@
     <string name="available_sports">Available Sports:</string>
     <string name="events">Events</string>
 
+    <string name="delete_event">DELETE EVENT</string>
+    <string name="delete_venue">DELETE VENUE</string>
+
+
 
 </resources>
