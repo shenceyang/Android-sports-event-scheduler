@@ -57,8 +57,7 @@ public class Customer_center extends AppCompatActivity {
         quitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Customer_center.this,  login_page.class);
-                startActivity(intent);
+                finish();
             }
         });
 

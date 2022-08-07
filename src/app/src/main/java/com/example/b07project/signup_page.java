@@ -29,7 +29,6 @@ public class signup_page extends AppCompatActivity {
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO check if empty and set error
 
                 if(TextUtils.isEmpty(username.getText().toString())) {
                     username.setError("Username cannot be empty");
@@ -55,6 +54,8 @@ public class signup_page extends AppCompatActivity {
                                     DatabaseReference d = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
                                     CustomerPresenter customerPresenter = new CustomerPresenter(new CustomerView(), d);
                                     customerPresenter.pushCustomer(c);
+                                    Toast.makeText(signup_page.this, "Account Created", Toast.LENGTH_SHORT).show();
+                                    finish();
                                 }
                             });
                         }

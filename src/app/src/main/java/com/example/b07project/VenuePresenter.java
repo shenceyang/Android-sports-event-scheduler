@@ -274,6 +274,7 @@ public class VenuePresenter {
     }
 
     // ********** For NewEvent **********
+
     public void newEventSubmit(Spinner eventVenue, Spinner eventSport, EditText eventMaxPlayers, EditText datePicker, EditText startTimePicker, EditText endTimePicker, EventPresenter eventPresenter, Context context, String userID, SchedulePresenter schedulePresenter) {
         // Check if any field is empty
 //        if(TextUtils.isEmpty(eventVenue.getText().toString())) {
@@ -343,8 +344,12 @@ public class VenuePresenter {
                                                 Schedule newSchedule = new Schedule(nextID, newEvent.getEventID(), userID, venueID);
                                                 schedulePresenter.pushSchedule(newSchedule);
                                                 Toast.makeText(context, "Event successfully added and joined", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(context, Customer_center.class);
-                                                context.startActivity(intent);
+
+                                                // Clear page
+                                                eventMaxPlayers.getText().clear();
+                                                datePicker.getText().clear();
+                                                startTimePicker.getText().clear();
+                                                endTimePicker.getText().clear();
                                             }
                                         });
                                     }
