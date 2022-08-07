@@ -28,5 +28,7 @@
     <string name="available_sports">Available Sports:</string>
     <string name="events">Events</string>
 
+    <string name="get_sports">Get Sports</string>
+
 
 </resources>

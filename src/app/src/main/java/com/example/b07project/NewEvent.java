@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -18,7 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class NewEvent extends AppCompatActivity {
@@ -29,8 +33,9 @@ public class NewEvent extends AppCompatActivity {
     private String userID;
 
     final Calendar calendar = Calendar.getInstance();
-    private EditText eventVenue;
-    private EditText eventSport;
+    private Spinner eventVenue;
+    private Spinner eventSport;
+    private Button getSportsButton;
     private EditText eventMaxPlayers;
     private EditText datePicker;
     private EditText startTimePicker;
@@ -109,8 +114,14 @@ public class NewEvent extends AppCompatActivity {
         });
     }
 
-    // ********** Submit Button **********
-
+    // ********** Sport Spinner **********
+    private void initSportSpinner() {
+        List<String> initSports = new ArrayList<String>();
+        initSports.add("None");
+        ArrayAdapter<String> initSportsAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, initSports);
+        initSportsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        eventSport.setAdapter(initSportsAdapter);
+    }
 
     // ********** Main **********
 
@@ -124,13 +135,46 @@ public class NewEvent extends AppCompatActivity {
         this.schedulePresenter = new SchedulePresenter(eventPresenter, this.database);
         this.userID = getIntent().getStringExtra("userID");
 
-        this.eventVenue = (EditText) findViewById(R.id.venue_prompt);
-        this.eventSport = (EditText) findViewById(R.id.sport_prompt);
+        this.eventVenue = (Spinner) findViewById(R.id.venue_spinner);
+        this.eventSport = (Spinner) findViewById(R.id.sport_spinner);
+        this.getSportsButton = (Button) findViewById(R.id.get_sports);
         this.eventMaxPlayers = (EditText) findViewById(R.id.max_players_prompt);
         this.datePicker = (EditText) findViewById(R.id.date_picker);
         this.startTimePicker = (EditText) findViewById(R.id.start_time_picker);
         this.endTimePicker = (EditText) findViewById(R.id.end_time_picker);
         this.submitButton = (Button) findViewById(R.id.new_event_submit);
+
+        // Get venue names List
+        venuePresenter.getVenueNamesList(new VenueCallback.GetVenueNamesListCallback() {
+            @Override
+            public void getVenueNamesListCallback(List<String> venueNames) {
+                ArrayAdapter<String> venueAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, venueNames);
+                venueAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                eventVenue.setAdapter(venueAdapter);
+            }
+        });
+
+        initSportSpinner();
+
+        this.getSportsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String venueName = eventVenue.getSelectedItem().toString();
+                venuePresenter.getVenueIDFromName(venueName, NewEvent.this, new VenueCallback.GetVenueIDFromNameCallback() {
+                    @Override
+                    public void getVenueIDFromNameCallback(int venueID) {
+                        venuePresenter.getAvailableSports(venueID, new VenueCallback.GetAvailableSportsCallback() {
+                            @Override
+                            public void getAvailableSportsCallback(List<String> sports) {
+                                ArrayAdapter<String> sportsAdapter = new ArrayAdapter<String>(NewEvent.this, android.R.layout.simple_spinner_item, sports);
+                                sportsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                eventSport.setAdapter(sportsAdapter);
+                            }
+                        });
+                    }
+                });
+            }
+        });
 
         selectDateListener();
         selectTimeListener(this.startTimePicker);
