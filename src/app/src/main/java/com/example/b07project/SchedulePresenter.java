@@ -8,6 +8,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SchedulePresenter {
 
     private EventPresenter eventPresenter;
@@ -70,14 +73,23 @@ public class SchedulePresenter {
         });
     }
 
+    public void getAllSchedules(ScheduleCallback.GetAllSchedulesCallback callback){
+        List<Schedule> allSchedules = new ArrayList<Schedule>();
+        this.database.child("schedules").orderByChild("scheduleID").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                allSchedules.clear();
+                for(DataSnapshot schedule: snapshot.getChildren()) {
+                    Schedule toAdd = schedule.getValue(Schedule.class);
+                    allSchedules.add(toAdd);
+                }
+                callback.getAllSchedulesCallBack(allSchedules);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        }
+    }
 
-
-
-
-
-    //remove schedule
-
-
-
-}
