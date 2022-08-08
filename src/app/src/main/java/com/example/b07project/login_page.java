@@ -31,7 +31,6 @@ public class login_page extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO check if empty and set error (copy from signup_page)
 
                 if(TextUtils.isEmpty(username.getText().toString())) {
                     username.setError("Username cannot be empty");
@@ -44,41 +43,26 @@ public class login_page extends AppCompatActivity {
                 }
 
                 else {
-                    loginPresenter.authenticateAdmin(username.getText().toString(), password.getText().toString(), login_page.this, new LoginCallback.AuthenticateAdminCallback() {
+
+                    loginPresenter.authenticate(username.getText().toString(), password.getText().toString(), login_page.this, new LoginCallback.AuthenticateCallback() {
                         @Override
-                        public void authenticateAdminCallback() {
+                        public void authenticateCallback(boolean isAdmin) {
                             Toast.makeText(login_page.this, "Login successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(login_page.this, Admin_center.class);
-                            intent.putExtra("userID", "admin");
                             username.setText("");
                             password.setText("");
+                            Intent intent;
+                            if(isAdmin) {
+                                intent = new Intent(login_page.this, Admin_center.class);
+                                intent.putExtra("userID", "admin");
+                            }
+                            else {
+                                intent = new Intent(login_page.this, Customer_center.class);
+                                intent.putExtra("userID", username.getText().toString());
+                            }
                             startActivity(intent);
                         }
                     });
                 }
-
-                // Login Authentication
-//                if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
-//                    //correct
-//                    Toast.makeText(login_page.this,"Login successful",Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(login_page.this,  Admin_center.class);
-//                    intent.putExtra("userID", "admin");
-//                    startActivity(intent);
-//                }
-                // If not admin, check for user login
-                // Will show Toast for incorrect login
-                loginPresenter.authenticateUser(username.getText().toString(), password.getText().toString(), login_page.this, new LoginCallback.AuthenticateUserCallback() {
-                    @Override
-                    public void authenticateUserCallback() {
-                        Toast.makeText(login_page.this, "Login successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(login_page.this,  Customer_center.class);
-                        intent.putExtra("userID", username.getText().toString());
-                        username.setText("");
-                        password.setText("");
-                        startActivity(intent);
-                    }
-                });
-
             }
         });
 

@@ -276,13 +276,14 @@ public class VenuePresenter {
     // ********** For NewEvent **********
 
     public void newEventSubmit(Spinner eventVenue, Spinner eventSport, EditText eventMaxPlayers, EditText datePicker, EditText startTimePicker, EditText endTimePicker, EventPresenter eventPresenter, Context context, String userID, SchedulePresenter schedulePresenter) {
-        // Check if any field is empty
-//        if(TextUtils.isEmpty(eventVenue.getText().toString())) {
-//            eventVenue.setError("Venue cannot be empty");
-//            return;
-//        }
+        TextView errorText = (TextView)eventSport.getSelectedView();
+        errorText.setError(null);
+        eventMaxPlayers.setError(null);
+        datePicker.setError(null);
+        startTimePicker.setError(null);
+        endTimePicker.setError(null);
+
         if(eventSport.getSelectedItem().toString().equals("None")) {
-            TextView errorText = (TextView)eventSport.getSelectedView();
             errorText.setError("");
             errorText.setTextColor(Color.RED);
             errorText.setText("Use Get Sports");

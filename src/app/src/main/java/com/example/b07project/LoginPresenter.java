@@ -17,50 +17,70 @@ public class LoginPresenter {
         this.database = database;
     }
 
-    public void authenticateAdmin(String username, String password, Context context, LoginCallback.AuthenticateAdminCallback authenticateAdminCallback) {
+    public void authenticate(String username, String password, Context context, LoginCallback.AuthenticateCallback authenticateCallback) {
         this.database.child("admins").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                boolean gotAdmin = false;
+                boolean gotAdmin = false;
                 for(DataSnapshot admin: snapshot.getChildren()) {
                     String adminUsername = admin.child("username").getValue(String.class);
                     String adminPassword = admin.child("password").getValue(String.class);
                     if(adminUsername.equals(username) && adminPassword.equals(password)) {
-//                        gotAdmin = true;
-                        authenticateAdminCallback.authenticateAdminCallback();
+                        gotAdmin = true;
+                        authenticateCallback.authenticateCallback(true);
                     }
                 }
-//                if(!gotAdmin) {
+                // If not admin, check if user
+                if(!gotAdmin) {
+                    database.child("customers").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            boolean gotUser = false;
+                            for(DataSnapshot customer: snapshot.getChildren()) {
+                                Customer c = customer.getValue(Customer.class);
+                                if(c.getUsername().equals(username) && c.getPassword().equals(password)) {
+                                    gotUser = true;
+                                    authenticateCallback.authenticateCallback(false);
+                                }
+                            }
+                            if(!gotUser) {
+                                Toast.makeText(context,"Login failed",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+//    public void authenticateUser(String username, String password, Context context, LoginCallback.AuthenticateUserCallback authenticateUserCallback) {
+//        this.database.child("customers").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                boolean gotUser = false;
+//                for(DataSnapshot customer: snapshot.getChildren()) {
+//                    Customer c = customer.getValue(Customer.class);
+//                    if(c.getUsername().equals(username) && c.getPassword().equals(password)) {
+//                        gotUser = true;
+//                        authenticateUserCallback.authenticateUserCallback();
+//                    }
+//                }
+//                if(!gotUser) {
 //                    Toast.makeText(context,"Login failed",Toast.LENGTH_SHORT).show();
 //                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
-
-    public void authenticateUser(String username, String password, Context context, LoginCallback.AuthenticateUserCallback authenticateUserCallback) {
-        this.database.child("customers").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                boolean gotUser = false;
-                for(DataSnapshot customer: snapshot.getChildren()) {
-                    Customer c = customer.getValue(Customer.class);
-                    if(c.getUsername().equals(username) && c.getPassword().equals(password)) {
-                        gotUser = true;
-                        authenticateUserCallback.authenticateUserCallback();
-                    }
-                }
-                if(!gotUser) {
-                    Toast.makeText(context,"Login failed",Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
+//    }
 }

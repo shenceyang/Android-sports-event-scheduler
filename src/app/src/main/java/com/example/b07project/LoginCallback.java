@@ -1,10 +1,10 @@
 package com.example.b07project;
 
 public interface LoginCallback {
-    interface AuthenticateAdminCallback {
-        void authenticateAdminCallback();
+    interface AuthenticateCallback {
+        void authenticateCallback(boolean isAdmin);
     }
-    interface AuthenticateUserCallback {
-        void authenticateUserCallback();
-    }
+//    interface AuthenticateCallback {
+//        void authenticateUserCallback();
+//    }
 }
