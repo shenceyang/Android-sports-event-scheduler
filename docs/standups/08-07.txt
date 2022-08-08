@@ -31,16 +31,16 @@ Start testing
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Completed buttons for deleting event/venue
 
 What are you planning on doing today?
-	- Put points here ...
+Work with the group to test the project overall
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Had problems getting the buttons to work but fixed them eventually
 
 Name: 
 
