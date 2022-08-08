@@ -37,7 +37,6 @@ public class ScheduleView extends AppCompatActivity {
                     TextView endText = (TextView) newSchedule.findViewById(R.id.eventEndTime);
                     TextView joinedPlayersText = (TextView) newSchedule.findViewById(R.id.eventJoinedPlayers);
                     TextView maxPlayersText = (TextView) newSchedule.findViewById(R.id.eventMaxPlayers);
-
                     if (schedule.getUserID().equals(userID)){
                         venuePresenter.getVenue(schedule.getVenueID(), new VenueCallback.GetVenueCallback() {
                             @Override
@@ -56,8 +55,9 @@ public class ScheduleView extends AppCompatActivity {
                                 maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
                             }
                         });
+                        schList.addView(newSchedule);
                     }
-                    schList.addView(newSchedule);
+
                 }
             }
 

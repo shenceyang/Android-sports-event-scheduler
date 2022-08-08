@@ -48,8 +48,6 @@ public class login_page extends AppCompatActivity {
                         @Override
                         public void authenticateCallback(boolean isAdmin) {
                             Toast.makeText(login_page.this, "Login successful", Toast.LENGTH_SHORT).show();
-                            username.setText("");
-                            password.setText("");
                             Intent intent;
                             if(isAdmin) {
                                 intent = new Intent(login_page.this, Admin_center.class);
@@ -59,6 +57,8 @@ public class login_page extends AppCompatActivity {
                                 intent = new Intent(login_page.this, Customer_center.class);
                                 intent.putExtra("userID", username.getText().toString());
                             }
+                            username.setText("");
+                            password.setText("");
                             startActivity(intent);
                         }
                     });

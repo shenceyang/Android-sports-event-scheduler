@@ -27,7 +27,6 @@ public class Customer_center extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // pass userID
-                // TODO: change
                 Intent intent = new Intent(Customer_center.this,  ScheduleView.class);
                 intent.putExtra("userID", userID);
                 startActivity(intent);
