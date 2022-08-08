@@ -17,6 +17,7 @@ public class Admin_center extends AppCompatActivity {
         MaterialButton addvenuebtn = (MaterialButton) findViewById(R.id.addvenuebtn);
         MaterialButton Venuelistbtn = (MaterialButton) findViewById(R.id.Venuelistbtn);
         MaterialButton quitbtn = (MaterialButton) findViewById(R.id.quitbtn);
+        MaterialButton venueinfobtn = (MaterialButton) findViewById(R.id.venueinfobtn);
 
         addvenuebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +32,15 @@ public class Admin_center extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Admin_center.this,  VenueView.class);
+                startActivity(intent);
+
+            }
+        });
+
+        venueinfobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Admin_center.this,  AdminUpEvents.class);
                 startActivity(intent);
 
             }
