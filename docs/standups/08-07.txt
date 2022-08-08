@@ -9,16 +9,16 @@ Think of more test cases for integration testing between different app component
 Any impediments or stumbling blocks?
 A little bit behind original plan in terms of time, but should have enough time to finish with a confident product.
 
-Name: 
+Name: Mustafa Hasan
 
 What have you done since yesterday?
-	- Put points here ...
+Finished scedule
 
 What are you planning on doing today?
-	- Put points here ...
+Fix bugs
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Android studio super buggy and laggy on my computer so tough to test app
 
 Name: 
 
