@@ -1,0 +1,54 @@
+Name: Chun Kang Lu 
+
+What have you done since yesterday?
+Improved New Event dropdown menus, and other smaller bug fixes
+
+What are you planning on doing today?
+Think of more test cases for integration testing between different app components.
+
+Any impediments or stumbling blocks?
+A little bit behind original plan in terms of time, but should have enough time to finish with a confident product.
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
