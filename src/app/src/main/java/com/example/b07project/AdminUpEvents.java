@@ -49,6 +49,8 @@ public class AdminUpEvents extends AppCompatActivity {
                         TextView eventEnd = newEvent.findViewById(R.id.eventEndTimeAdmin);
                         TextView eventJoinedPlayers = newEvent.findViewById(R.id.eventJoinedPlayersAdmin);
                         TextView eventMaxPlayers = newEvent.findViewById(R.id.eventMaxPlayersAdmin);
+                        Button deleteEventButton = newEvent.findViewById(R.id.button7);
+                        Button deleteVenueButton = newEvent.findViewById(R.id.button8);
 
                         eventVenue.setText("Venue: " + venueName);
                         eventDate.setText("Date: " + e.getDay() + "/" + e.getMonth());
@@ -60,15 +62,12 @@ public class AdminUpEvents extends AppCompatActivity {
 
                         eventList.addView(newEvent);
 
-                        Button deleteEventButton = (Button) findViewById(R.id.button7);
-                        Button deleteVenueButton = (Button) findViewById(R.id.button8);
-
                         deleteEventButton.setOnClickListener(new View.OnClickListener(){
                             @Override
                             public void onClick(View view){
                                 Toast.makeText(AdminUpEvents.this, "Deleting event " + e.getEventID(), Toast.LENGTH_SHORT).show();
                                 eventList.removeView(newEvent);
-                                //eventPresenter.removeEvent(e.getEventID());
+                                eventPresenter.removeEvent(e.getEventID());
                             }
                         });
 
@@ -77,11 +76,11 @@ public class AdminUpEvents extends AppCompatActivity {
                             public void onClick(View view){
                                 Toast.makeText(AdminUpEvents.this, "Deleting venue " + venueName, Toast.LENGTH_SHORT).show();
                                 eventList.removeAllViews();
-                                //venuePresenter.removeVenue(e.getVenueID());
+                                venuePresenter.removeVenue(e.getVenueID());
                             }
                         });
-                    }
 
+                    }
                 }
                 if(!hasEvent){
                     Toast.makeText(AdminUpEvents.this, "No upcoming events for " + venueName, Toast.LENGTH_SHORT).show();
@@ -127,17 +126,8 @@ public class AdminUpEvents extends AppCompatActivity {
         setContentView(R.layout.upcoming_events_admin);
 
         Button searchButton = (Button) findViewById(R.id.button4);
-        Button backButton = (Button) findViewById(R.id.button6);
 
         EditText editText = (EditText) findViewById(R.id.editTextTextPersonName3);
-
-        backButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(AdminUpEvents.this, Admin_center.class);
-                startActivity(intent);
-            }
-        });
 
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
