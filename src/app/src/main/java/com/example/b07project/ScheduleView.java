@@ -27,6 +27,12 @@ public class ScheduleView extends AppCompatActivity {
             @Override
             public void getAllSchedulesCallBack(List<Schedule> allSchedules) {
                 LinearLayout schList = (LinearLayout) findViewById(R.id.schedule);
+                if (allSchedules.size() == 0){
+                    LayoutInflater inflater = getLayoutInflater();
+                    View newSchedule = inflater.inflate(R.layout.activity_empty_schedule, schList, true);
+                }
+                else {
+                    int min1 = 0;
                 for (Schedule schedule: allSchedules){
                     LayoutInflater inflater = getLayoutInflater();
                     View newSchedule = inflater.inflate(R.layout.activity_schedule_template, schList, false);
@@ -41,6 +47,7 @@ public class ScheduleView extends AppCompatActivity {
                     Button deleteButton = (Button) newSchedule.findViewById(R.id.deleteButton);
 
                     if (schedule.getUserID().equals(userID)){
+                        min1++;
                         venuePresenter.getVenue(schedule.getVenueID(), new VenueCallback.GetVenueCallback() {
                             @Override
                             public void getVenueCallback(Venue venue) {
@@ -71,6 +78,11 @@ public class ScheduleView extends AppCompatActivity {
                         schList.addView(newSchedule);
                     }
 
+                }
+                if (min1 == 0){
+                    LayoutInflater inflater = getLayoutInflater();
+                    View newSchedule = inflater.inflate(R.layout.activity_empty_schedule, schList, true);
+                }
                 }
             }
 
