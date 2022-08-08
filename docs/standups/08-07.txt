@@ -20,16 +20,16 @@ Fix bugs
 Any impediments or stumbling blocks?
 Android studio super buggy and laggy on my computer so tough to test app
 
-Name: 
+Name: Shence Yang
 
 What have you done since yesterday?
-	- Put points here ...
+Google some examples of testing
 
 What are you planning on doing today?
-	- Put points here ...
+Start testing
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
