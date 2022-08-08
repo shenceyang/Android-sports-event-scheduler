@@ -22,48 +22,49 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addvenuebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
         android:layout_below="@id/admin_center"
-        android:backgroundTint="@color/purple_200"
-        android:text="add a venue"
         android:layout_centerHorizontal="true"
-        android:layout_margin="30dp"
-        />
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/purple_200"
+        android:text="add a venue" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/Venuelistbtn"
-        android:layout_width="199dp"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
         android:layout_below="@id/addvenuebtn"
         android:layout_centerInParent="true"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/purple_200"
         android:text="see venue list" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/venueinfobtn"
-        android:layout_width="199dp"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
         android:layout_below="@id/Venuelistbtn"
         android:layout_centerInParent="true"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/purple_200"
         android:text="venue info " />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/quitbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="67dp"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
         android:layout_below="@id/venueinfobtn"
         android:layout_centerInParent="true"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/purple_200"
         android:text="quit current account" />
-
 
 
 </RelativeLayout>

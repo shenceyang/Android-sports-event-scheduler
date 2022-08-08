@@ -66,6 +66,7 @@ public class EventView extends AppCompatActivity {
                         @Override
                         public void isScheduledCallback() {
                             joinButton.setEnabled(false);
+                            joinButton.setText("joined");
                         }
                     });
 
