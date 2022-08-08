@@ -22,16 +22,16 @@ Add buttons for deleting the event and entire venue
 Any impediments or stumbling blocks?
 Having work for other classes due soon
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+Changed features of NewEvent
 
 What are you planning on doing today?
-	- Put points here ...
+Looking into a toolbar for back buttons for all pages
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
