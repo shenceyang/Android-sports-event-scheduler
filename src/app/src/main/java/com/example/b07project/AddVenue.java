@@ -32,18 +32,9 @@ public class AddVenue extends AppCompatActivity {
 
         Button submitButton = (Button) findViewById(R.id.button);
         Button addButton = (Button) findViewById(R.id.button2);
-        Button backButton = (Button) findViewById(R.id.button3);
         EditText editText2 = (EditText) findViewById(R.id.editTextTextPersonName);
         EditText editText1 = (EditText) findViewById(R.id.editTextTextPersonName2);
         DatabaseReference database = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
-
-        backButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(AddVenue.this, Admin_center.class); // REPLACE something WITH REDIRECTION AFTER SUBMIT AND UNCOMMENT startActivity
-                startActivity(intent);
-            }
-        });
 
         addButton.setOnClickListener(new View.OnClickListener(){
             @Override
