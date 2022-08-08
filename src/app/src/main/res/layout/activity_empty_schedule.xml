@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/empty_schedule"
         android:layout_width="245dp"
         android:layout_height="58dp"
         android:text="      You have no events scheduled or joined."

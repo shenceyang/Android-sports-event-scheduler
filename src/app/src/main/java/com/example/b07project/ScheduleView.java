@@ -29,7 +29,7 @@ public class ScheduleView extends AppCompatActivity {
                 LinearLayout schList = (LinearLayout) findViewById(R.id.schedule);
                 if (allSchedules.size() == 0){
                     LayoutInflater inflater = getLayoutInflater();
-                    View newSchedule = inflater.inflate(R.layout.activity_empty_schedule, schList, true);
+                    inflater.inflate(R.layout.activity_empty_schedule, schList, true);
                 }
                 else {
                     int min1 = 0;
@@ -81,7 +81,7 @@ public class ScheduleView extends AppCompatActivity {
                 }
                 if (min1 == 0){
                     LayoutInflater inflater = getLayoutInflater();
-                    View newSchedule = inflater.inflate(R.layout.activity_empty_schedule, schList, true);
+                    inflater.inflate(R.layout.activity_empty_schedule, schList, true);
                 }
                 }
             }
