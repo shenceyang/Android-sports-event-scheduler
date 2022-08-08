@@ -32,6 +32,7 @@ public class AdminUpEvents extends AppCompatActivity {
             @Override
             public void getSortedListEventsCallback(List<Event> sortedEvents) {
                 LinearLayout eventList = (LinearLayout) findViewById(R.id.eventListAdmin);
+                eventList.removeAllViews();
 
                 boolean hasEvent = false;
 
@@ -53,10 +54,17 @@ public class AdminUpEvents extends AppCompatActivity {
                         Button deleteVenueButton = newEvent.findViewById(R.id.button8);
 
                         eventVenue.setText("Venue: " + venueName);
-                        eventDate.setText("Date: " + e.getDay() + "/" + e.getMonth());
+//                        eventDate.setText("Date: " + e.getDay() + "/" + e.getMonth());
+//                        eventSport.setText("Sport: " + e.getSport());
+//                        eventStart.setText("Start: " + e.getStartHour() + ":" + e.getStartMin());
+//                        eventEnd.setText("End: " + e.getEndHour() + ":" + e.getEndMin());
+//                        eventJoinedPlayers.setText("Joined Players: " + e.getCurrPlayers());
+//                        eventMaxPlayers.setText("Max Players: " + e.getMaxPlayers());
+
+                        eventDate.setText("Date: " + e.getDay() + "/" + e.getMonth() + "/" + e.getYear());
                         eventSport.setText("Sport: " + e.getSport());
-                        eventStart.setText("Start: " + e.getStartHour() + ":" + e.getStartMin());
-                        eventEnd.setText("End: " + e.getEndHour() + ":" + e.getEndMin());
+                        eventStart.setText("Start: " + e.getStartHour() + ":" + String.format("%02d", e.getStartMin()));
+                        eventEnd.setText("End: " + e.getEndHour() + ":" + String.format("%02d", e.getEndMin()));
                         eventJoinedPlayers.setText("Joined Players: " + e.getCurrPlayers());
                         eventMaxPlayers.setText("Max Players: " + e.getMaxPlayers());
 
@@ -66,8 +74,10 @@ public class AdminUpEvents extends AppCompatActivity {
                             @Override
                             public void onClick(View view){
                                 Toast.makeText(AdminUpEvents.this, "Deleting event " + e.getEventID(), Toast.LENGTH_SHORT).show();
-                                eventList.removeView(newEvent);
+//                                eventList.removeView(newEvent);
                                 eventPresenter.removeEvent(e.getEventID());
+                                eventList.removeAllViews();
+                                upcomingEvents(venueName, venueID);
                             }
                         });
 

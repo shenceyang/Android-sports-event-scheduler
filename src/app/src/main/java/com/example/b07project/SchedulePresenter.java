@@ -75,7 +75,7 @@ public class SchedulePresenter {
 
     public void getAllSchedules(ScheduleCallback.GetAllSchedulesCallback callback){
         List<Schedule> allSchedules = new ArrayList<Schedule>();
-        this.database.child("schedules").orderByChild("scheduleID").addListenerForSingleValueEvent(new ValueEventListener() {
+        this.database.child("schedules").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 allSchedules.clear();

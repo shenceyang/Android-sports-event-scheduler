@@ -1,8 +1,10 @@
 package com.example.b07project;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,11 +30,15 @@ public class ScheduleView extends AppCompatActivity {
                     LayoutInflater inflater = getLayoutInflater();
                     View newSchedule = inflater.inflate(R.layout.activity_schedule_template, schList, false);
 
-                    TextView venueText = (TextView) newSchedule.findViewById(R.id.schVenue);
-                    TextView dateText = (TextView) newSchedule.findViewById(R.id.schDate);
-                    TextView sportText = (TextView) newSchedule.findViewById(R.id.schEvent);
+                    TextView venueText = (TextView) newSchedule.findViewById(R.id.eventVenue);
+                    TextView dateText = (TextView) newSchedule.findViewById(R.id.eventDate);
+                    TextView sportText = (TextView) newSchedule.findViewById(R.id.eventSport);
+                    TextView startText = (TextView) newSchedule.findViewById(R.id.eventStartTime);
+                    TextView endText = (TextView) newSchedule.findViewById(R.id.eventEndTime);
+                    TextView joinedPlayersText = (TextView) newSchedule.findViewById(R.id.eventJoinedPlayers);
+                    TextView maxPlayersText = (TextView) newSchedule.findViewById(R.id.eventMaxPlayers);
 
-                    if (schedule.getUserID() == userID){
+                    if (schedule.getUserID().equals(userID)){
                         venuePresenter.getVenue(schedule.getVenueID(), new VenueCallback.GetVenueCallback() {
                             @Override
                             public void getVenueCallback(Venue venue) {
@@ -44,9 +50,14 @@ public class ScheduleView extends AppCompatActivity {
                             public void getEventCallback(Event event) {
                                 dateText.setText("Date: " + event.getDay() + "/" + event.getMonth() + "/" + event.getYear());
                                 sportText.setText("Sport: " + event.getSport());
+                                startText.setText("Start: " + event.getStartHour() + ":" + String.format("%02d", event.getStartMin()));
+                                endText.setText("End: " + event.getEndHour() + ":" + String.format("%02d", event.getEndMin()));
+                                joinedPlayersText.setText("Players joined: " + event.getCurrPlayers());
+                                maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
                             }
                         });
                     }
+                    schList.addView(newSchedule);
                 }
             }
 
