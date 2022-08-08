@@ -30,13 +30,14 @@ public class SchedulePresenter {
     }
 
     public void removeSchedule(int scheduleID) {
-        this.database.child("schedules")
-                .child(String.valueOf(scheduleID))
-                .removeValue();
         this.getSchedule(scheduleID, new ScheduleCallback.GetScheduleCallback() {
             @Override
             public void getScheduleCallback(Schedule schedule) {
                 eventPresenter.removePlayer(schedule.getEventID());
+
+                database.child("schedules")
+                        .child(String.valueOf(scheduleID))
+                        .removeValue();
             }
         });
     }

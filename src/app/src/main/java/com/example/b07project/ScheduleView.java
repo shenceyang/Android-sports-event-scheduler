@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +38,8 @@ public class ScheduleView extends AppCompatActivity {
                     TextView endText = (TextView) newSchedule.findViewById(R.id.eventEndTime);
                     TextView joinedPlayersText = (TextView) newSchedule.findViewById(R.id.eventJoinedPlayers);
                     TextView maxPlayersText = (TextView) newSchedule.findViewById(R.id.eventMaxPlayers);
+                    Button deleteButton = (Button) newSchedule.findViewById(R.id.deleteButton);
+
                     if (schedule.getUserID().equals(userID)){
                         venuePresenter.getVenue(schedule.getVenueID(), new VenueCallback.GetVenueCallback() {
                             @Override
@@ -55,6 +58,16 @@ public class ScheduleView extends AppCompatActivity {
                                 maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
                             }
                         });
+                        deleteButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                schedulePresenter.removeSchedule(schedule.getScheduleID());
+                                Toast.makeText(ScheduleView.this, "Joined Schedule Deleted", Toast.LENGTH_SHORT).show();
+                                schList.removeAllViews();
+                                addSchedule();
+                            }
+                        });
+
                         schList.addView(newSchedule);
                     }
 
