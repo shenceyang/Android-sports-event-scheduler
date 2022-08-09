@@ -31,16 +31,16 @@ testing and maybe change schedule layout a bit (to reduce redundancy)
 Any impediments or stumbling blocks?
 App keeps crashing (probably computer issue) so hard to test/implement features
 
-Name: 
+Name: Shence Yang
 
 What have you done since yesterday?
-	- Put points here ...
+Testing 
 
 What are you planning on doing today?
-	- Put points here ...
+Keep testing and fix bugs
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
