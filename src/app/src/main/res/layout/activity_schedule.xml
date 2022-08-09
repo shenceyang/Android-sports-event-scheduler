@@ -5,33 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/customerSchedule"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Schedule"
-        android:textAlignment="center"
-        android:textSize="34sp"
-
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        app:theme="@style/ToolbarTheme"
+        app:title="My Schedule"
+        app:titleTextColor="#FFFFFF" />
 
-        <ScrollView
+    <ScrollView
+        android:layout_width="410dp"
+        android:layout_height="675dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:id="@+id/schedule"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="52dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck">
+            android:layout_height="wrap_content"
 
-            <LinearLayout
-                android:id="@+id/schedule"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            android:orientation="vertical"></LinearLayout>
+    </ScrollView>
 
-                android:orientation="vertical"></LinearLayout>
-        </ScrollView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

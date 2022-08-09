@@ -1,6 +1,7 @@
 package com.example.b07project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,9 +27,19 @@ public class AddVenue extends AppCompatActivity {
     }
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_venue);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar8);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Button submitButton = (Button) findViewById(R.id.button);
         Button addButton = (Button) findViewById(R.id.button2);
