@@ -46,8 +46,7 @@ public class ScheduleView extends AppCompatActivity {
                     TextView joinedPlayersText = (TextView) newSchedule.findViewById(R.id.eventJoinedPlayers);
                     TextView maxPlayersText = (TextView) newSchedule.findViewById(R.id.eventMaxPlayers);
                     Button deleteButton = (Button) newSchedule.findViewById(R.id.deleteButton);
-
-<<<<<<< HEAD
+                    
                     venuePresenter.getVenue(schedule.getVenueID(), new VenueCallback.GetVenueCallback() {
                         @Override
                         public void getVenueCallback(Venue venue) {
@@ -76,43 +75,6 @@ public class ScheduleView extends AppCompatActivity {
                     });
 
                     schList.addView(newSchedule);
-=======
-                    if (schedule.getUserID().equals(userID)){
-                        min1++;
-                        venuePresenter.getVenue(schedule.getVenueID(), new VenueCallback.GetVenueCallback() {
-                            @Override
-                            public void getVenueCallback(Venue venue) {
-                                venueText.setText("Venue: " + venue.getVenueName());
-                            }
-                        });
-                        eventPresenter.getEvent(schedule.getEventID(), new EventCallback.GetEventCallback() {
-                            @Override
-                            public void getEventCallback(Event event) {
-                                dateText.setText("Date: " + event.getDay() + "/" + event.getMonth() + "/" + event.getYear());
-                                sportText.setText("Sport: " + event.getSport());
-                                startText.setText("Start: " + event.getStartHour() + ":" + String.format("%02d", event.getStartMin()));
-                                endText.setText("End: " + event.getEndHour() + ":" + String.format("%02d", event.getEndMin()));
-                                joinedPlayersText.setText("Players joined: " + event.getCurrPlayers());
-                                maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
-                            }
-                        });
-                        deleteButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                schedulePresenter.removeSchedule(schedule.getScheduleID());
-                                Toast.makeText(ScheduleView.this, "Joined Schedule Deleted", Toast.LENGTH_SHORT).show();
-                                schList.removeAllViews();
-                                addSchedule();
-                            }
-                        });
->>>>>>> 1b05ccd9156b4d79b45e696b947def4b1765ecad
-
-
-                }
-                if (min1 == 0){
-                    LayoutInflater inflater = getLayoutInflater();
-                    inflater.inflate(R.layout.activity_empty_schedule, schList, true);
-                }
                 }
             }
 
