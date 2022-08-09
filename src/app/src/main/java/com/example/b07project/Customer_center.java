@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
+import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -30,6 +31,7 @@ public class Customer_center extends AppCompatActivity {
                 Intent intent = new Intent(Customer_center.this,  ScheduleView.class);
                 intent.putExtra("userID", userID);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -39,6 +41,7 @@ public class Customer_center extends AppCompatActivity {
                 Intent intent = new Intent(Customer_center.this,  NewEvent.class);
                 intent.putExtra("userID", userID);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
             }
         }));
@@ -50,6 +53,7 @@ public class Customer_center extends AppCompatActivity {
                 Intent intent = new Intent(Customer_center.this,  EventView.class);
                 intent.putExtra("userID", userID);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -57,6 +61,7 @@ public class Customer_center extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -66,6 +71,7 @@ public class Customer_center extends AppCompatActivity {
                 // pass userID
                 Intent intent = new Intent(Customer_center.this,  VenueView.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
             }
         });

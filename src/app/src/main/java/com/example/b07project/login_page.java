@@ -32,51 +32,46 @@ public class login_page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(TextUtils.isEmpty(username.getText().toString())) {
+                if (TextUtils.isEmpty(username.getText().toString())) {
                     username.setError("Username cannot be empty");
                     return;
-                }
-
-                else if(TextUtils.isEmpty(password.getText().toString())) {
+                } else if (TextUtils.isEmpty(password.getText().toString())) {
                     password.setError("Password cannot be empty");
                     return;
-                }
-
-                else {
+                } else {
 
                     loginPresenter.authenticate(username.getText().toString(), password.getText().toString(), login_page.this, new LoginCallback.AuthenticateCallback() {
                         @Override
                         public void authenticateCallback(boolean isAdmin) {
                             Toast.makeText(login_page.this, "Login successful", Toast.LENGTH_SHORT).show();
                             Intent intent;
-                            if(isAdmin) {
+                            if (isAdmin) {
                                 intent = new Intent(login_page.this, Admin_center.class);
                                 intent.putExtra("userID", "admin");
-                            }
-                            else {
+                            } else {
                                 intent = new Intent(login_page.this, Customer_center.class);
                                 intent.putExtra("userID", username.getText().toString());
                             }
                             username.setText("");
                             password.setText("");
                             startActivity(intent);
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         }
                     });
                 }
             }
         });
 
-        signupbtn.setOnClickListener(new View.OnClickListener(){
+        signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(login_page.this, signup_page.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
         //doing the redirect
-
-
 
 
     }

@@ -46,6 +46,19 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:layout_width="360dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="44dp"
+                android:background="#D7000000"
+                android:gravity="center_horizontal"
+                android:text="Horizontal Line"
+                android:textSize="50sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.538"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:id="@+id/availableSports"
                 android:layout_width="169dp"
                 android:layout_height="79dp"

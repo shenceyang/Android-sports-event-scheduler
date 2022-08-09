@@ -1,6 +1,7 @@
 package com.example.b07project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,9 +18,19 @@ public class signup_page extends AppCompatActivity {
     private DatabaseReference database = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_page);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar9);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         this.signupPresenter = new SignupPresenter(database);
         TextView username = (TextView) findViewById(R.id.signup_username);

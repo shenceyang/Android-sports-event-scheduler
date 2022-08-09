@@ -24,6 +24,7 @@ public class Admin_center extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Admin_center.this,  AddVenue.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -33,7 +34,7 @@ public class Admin_center extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Admin_center.this,  VenueView.class);
                 startActivity(intent);
-
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -42,7 +43,7 @@ public class Admin_center extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Admin_center.this,  AdminUpEvents.class);
                 startActivity(intent);
-
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -50,7 +51,7 @@ public class Admin_center extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
