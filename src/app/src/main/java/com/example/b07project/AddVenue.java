@@ -52,9 +52,13 @@ public class AddVenue extends AppCompatActivity {
             public void onClick(View view){
                 String sport = editText1.getText().toString();
 
-                if(sport.equals("")){
+                if (sport.equals("")){
                     Toast.makeText(AddVenue.this, "Not a valid sport", Toast.LENGTH_SHORT).show();
 
+                }
+                else if (sports.contains(sport)){
+                    editText1.getText().clear();
+                    Toast.makeText(AddVenue.this, sport + " has already been added", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     sports.add(sport);
@@ -69,7 +73,8 @@ public class AddVenue extends AppCompatActivity {
             public void onClick(View view){
                 name = editText2.getText().toString();
                 if (name.equals("")){
-                    Toast.makeText(AddVenue.this, "Please enter venue name", Toast.LENGTH_SHORT).show();
+                    clearSports();
+                    Toast.makeText(AddVenue.this, "Invalid name, please re-add sports with valid venue name", Toast.LENGTH_LONG).show();
                 }
                 else if (sports.isEmpty()){
                     Toast.makeText(AddVenue.this, "Please enter at least one sport", Toast.LENGTH_SHORT).show();
@@ -89,7 +94,7 @@ public class AddVenue extends AppCompatActivity {
                                     venuePresenter.pushVenue(venue);
                                     editText1.getText().clear();
                                     editText2.getText().clear();
-                                    sports.clear();
+                                    clearSports();
                                     Toast.makeText(AddVenue.this, "Added venue " + name, Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -101,9 +106,6 @@ public class AddVenue extends AppCompatActivity {
                             clearSports();
                         }
                     });
-
-                    //Intent intent = new Intent(this, something.class); // REPLACE something WITH REDIRECTION AFTER SUBMIT AND UNCOMMENT startActivity
-                    //startActivity(intent);
                 }
             }
         });
