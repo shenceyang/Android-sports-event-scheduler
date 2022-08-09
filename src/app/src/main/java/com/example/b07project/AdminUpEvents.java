@@ -21,7 +21,7 @@ import java.util.List;
 
 public class AdminUpEvents extends AppCompatActivity {
 
-    private List<String> venueSearch = new ArrayList<String>();
+    private String lastSearched = "";
     private VenuePresenter venuePresenter;
     private EventPresenter eventPresenter;
     private DatabaseReference database = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
@@ -36,10 +36,11 @@ public class AdminUpEvents extends AppCompatActivity {
                 eventList.removeAllViews();
 
                 boolean hasEvent = false;
+                LayoutInflater inflater = getLayoutInflater();
 
                 for (Event e:sortedEvents) {
+
                     if (e.getVenueID() == venueID) {
-                        LayoutInflater inflater = getLayoutInflater();
                         View newEvent = inflater.inflate(R.layout.upcoming_events_admin_template, eventList, false);
 
                         hasEvent = true;
@@ -55,13 +56,6 @@ public class AdminUpEvents extends AppCompatActivity {
                         Button deleteVenueButton = newEvent.findViewById(R.id.button8);
 
                         eventVenue.setText("Venue: " + venueName);
-//                        eventDate.setText("Date: " + e.getDay() + "/" + e.getMonth());
-//                        eventSport.setText("Sport: " + e.getSport());
-//                        eventStart.setText("Start: " + e.getStartHour() + ":" + e.getStartMin());
-//                        eventEnd.setText("End: " + e.getEndHour() + ":" + e.getEndMin());
-//                        eventJoinedPlayers.setText("Joined Players: " + e.getCurrPlayers());
-//                        eventMaxPlayers.setText("Max Players: " + e.getMaxPlayers());
-
                         eventDate.setText("Date: " + e.getDay() + "/" + e.getMonth() + "/" + e.getYear());
                         eventSport.setText("Sport: " + e.getSport());
                         eventStart.setText("Start: " + e.getStartHour() + ":" + String.format("%02d", e.getStartMin()));
@@ -75,9 +69,8 @@ public class AdminUpEvents extends AppCompatActivity {
                             @Override
                             public void onClick(View view){
                                 Toast.makeText(AdminUpEvents.this, "Deleting event " + e.getEventID(), Toast.LENGTH_SHORT).show();
-//                                eventList.removeView(newEvent);
+                                eventList.removeView(newEvent);
                                 eventPresenter.removeEvent(e.getEventID());
-                                eventList.removeAllViews();
                                 upcomingEvents(venueName, venueID);
                             }
                         });
@@ -94,8 +87,24 @@ public class AdminUpEvents extends AppCompatActivity {
                     }
                 }
                 if(!hasEvent){
-                    Toast.makeText(AdminUpEvents.this, "No upcoming events for " + venueName, Toast.LENGTH_SHORT).show();
-                    venueSearch.remove(venueName);
+
+                    View newNoEvent = inflater.inflate(R.layout.no_events_admin_template, eventList, false);
+                    TextView noEventVenue = newNoEvent.findViewById(R.id.noEventVenueAdmin);
+                    Button deleteVenueButton = newNoEvent.findViewById(R.id.button9);
+                    noEventVenue.setText("Venue: " + venueName);
+
+                    eventList.addView(newNoEvent);
+
+                    deleteVenueButton.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View view){
+                            Toast.makeText(AdminUpEvents.this, "Deleting venue " + venueName, Toast.LENGTH_SHORT).show();
+                            eventList.removeAllViews();
+                            venuePresenter.removeVenue(venueID);
+                        }
+                    });
+
+                    lastSearched = "";
                 }
             }
         });
@@ -103,8 +112,7 @@ public class AdminUpEvents extends AppCompatActivity {
 
     public void findVenue(String venueName){
 
-        if (!venueSearch.contains(venueName)) {
-            venueSearch.add(venueName);
+        if (venueName != lastSearched) {
             this.venuePresenter = new VenuePresenter(this.database);
             this.venuePresenter.getAllVenues(new VenueCallback.GetAllVenuesCallback() {
                 @Override
@@ -114,6 +122,7 @@ public class AdminUpEvents extends AppCompatActivity {
                         if (venueName.equals(v.getVenueName())) {
                             venueID = v.getVenueID();
                             if (venueID != -1) {
+                                lastSearched = venueName;
                                 upcomingEvents(venueName, venueID);
                             }
                             break;
@@ -121,13 +130,10 @@ public class AdminUpEvents extends AppCompatActivity {
                     }
                     if (venueID == -1){
                         Toast.makeText(AdminUpEvents.this, "Venue " + venueName + " does not exist", Toast.LENGTH_SHORT).show();
-                        venueSearch.remove(venueName);
+                        //venueSearch.remove(venueName);
                     }
                 }
             });
-        }
-        else{
-            Toast.makeText(AdminUpEvents.this, "Venue " + venueName + " has already been searched for", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -157,6 +163,7 @@ public class AdminUpEvents extends AppCompatActivity {
                     Toast.makeText(AdminUpEvents.this, "Please enter venue name", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    editText.getText().clear();
                     findVenue(venueName);
                 }
             }
