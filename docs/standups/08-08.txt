@@ -1,0 +1,54 @@
+Name: Chun Kang Lu 
+
+What have you done since yesterday?
+Finished all loose ends for main functionality of the app and started creating test suite and testing each page.
+
+What are you planning on doing today?
+Continue testing and resolving any bugs along the way.
+
+Any impediments or stumbling blocks?
+None
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
+
+Name: 
+
+What have you done since yesterday?
+	- Put points here ...
+
+What are you planning on doing today?
+	- Put points here ...
+
+Any impediments or stumbling blocks?
+	- Put points here ...
