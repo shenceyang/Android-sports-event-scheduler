@@ -23,10 +23,16 @@ public class ScheduleView extends AppCompatActivity {
     private String userID;
     private DatabaseReference database = FirebaseDatabase.getInstance("https://android-sport-app-default-rtdb.firebaseio.com/").getReference();
     private void addSchedule() {
-        this.schedulePresenter.getAllSchedules(new ScheduleCallback.GetAllSchedulesCallback(){
+        this.schedulePresenter.getAllSchedules(userID, new ScheduleCallback.GetAllSchedulesCallback(){
             @Override
             public void getAllSchedulesCallBack(List<Schedule> allSchedules) {
+                if(allSchedules.isEmpty()) {
+                    Toast.makeText(ScheduleView.this, "No Joined Events", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+
                 LinearLayout schList = (LinearLayout) findViewById(R.id.schedule);
+                schList.removeAllViews();
                 for (Schedule schedule: allSchedules){
                     LayoutInflater inflater = getLayoutInflater();
                     View newSchedule = inflater.inflate(R.layout.activity_schedule_template, schList, false);
@@ -40,36 +46,35 @@ public class ScheduleView extends AppCompatActivity {
                     TextView maxPlayersText = (TextView) newSchedule.findViewById(R.id.eventMaxPlayers);
                     Button deleteButton = (Button) newSchedule.findViewById(R.id.deleteButton);
 
-                    if (schedule.getUserID().equals(userID)){
-                        venuePresenter.getVenue(schedule.getVenueID(), new VenueCallback.GetVenueCallback() {
-                            @Override
-                            public void getVenueCallback(Venue venue) {
-                                venueText.setText("Venue: " + venue.getVenueName());
-                            }
-                        });
-                        eventPresenter.getEvent(schedule.getEventID(), new EventCallback.GetEventCallback() {
-                            @Override
-                            public void getEventCallback(Event event) {
-                                dateText.setText("Date: " + event.getDay() + "/" + event.getMonth() + "/" + event.getYear());
-                                sportText.setText("Sport: " + event.getSport());
-                                startText.setText("Start: " + event.getStartHour() + ":" + String.format("%02d", event.getStartMin()));
-                                endText.setText("End: " + event.getEndHour() + ":" + String.format("%02d", event.getEndMin()));
-                                joinedPlayersText.setText("Players joined: " + event.getCurrPlayers());
-                                maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
-                            }
-                        });
-                        deleteButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                schedulePresenter.removeSchedule(schedule.getScheduleID());
-                                Toast.makeText(ScheduleView.this, "Joined Schedule Deleted", Toast.LENGTH_SHORT).show();
-                                schList.removeAllViews();
-                                addSchedule();
-                            }
-                        });
+                    venuePresenter.getVenue(schedule.getVenueID(), new VenueCallback.GetVenueCallback() {
+                        @Override
+                        public void getVenueCallback(Venue venue) {
+                            venueText.setText("Venue: " + venue.getVenueName());
+                        }
+                    });
+                    eventPresenter.getEvent(schedule.getEventID(), new EventCallback.GetEventCallback() {
+                        @Override
+                        public void getEventCallback(Event event) {
+                            dateText.setText("Date: " + event.getDay() + "/" + event.getMonth() + "/" + event.getYear());
+                            sportText.setText("Sport: " + event.getSport());
+                            startText.setText("Start: " + event.getStartHour() + ":" + String.format("%02d", event.getStartMin()));
+                            endText.setText("End: " + event.getEndHour() + ":" + String.format("%02d", event.getEndMin()));
+                            joinedPlayersText.setText("Players joined: " + event.getCurrPlayers());
+                            maxPlayersText.setText("Max Players: " + event.getMaxPlayers());
+                        }
+                    });
+                    deleteButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            schedulePresenter.removeSchedule(schedule.getScheduleID());
+                            Toast.makeText(ScheduleView.this, "Joined Schedule Deleted", Toast.LENGTH_SHORT).show();
+                            schList.removeAllViews();
+                            addSchedule();
+                        }
+                    });
 
-                        schList.addView(newSchedule);
-                    }
+                    schList.addView(newSchedule);
+
 
                 }
             }

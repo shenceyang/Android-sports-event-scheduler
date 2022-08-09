@@ -74,7 +74,7 @@ public class SchedulePresenter {
         });
     }
 
-    public void getAllSchedules(ScheduleCallback.GetAllSchedulesCallback callback){
+    public void getAllSchedules(String userID, ScheduleCallback.GetAllSchedulesCallback callback){
         List<Schedule> allSchedules = new ArrayList<Schedule>();
         this.database.child("schedules").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -82,7 +82,9 @@ public class SchedulePresenter {
                 allSchedules.clear();
                 for(DataSnapshot schedule: snapshot.getChildren()) {
                     Schedule toAdd = schedule.getValue(Schedule.class);
-                    allSchedules.add(toAdd);
+                    if(toAdd.getUserID().equals(userID)) {
+                        allSchedules.add(toAdd);
+                    }
                 }
                 callback.getAllSchedulesCallBack(allSchedules);
             }
