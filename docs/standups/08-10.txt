@@ -31,16 +31,16 @@ Submit
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Mustafa Hasan
 
 What have you done since yesterday?
-	- Put points here ...
+Quick skim of app and code
 
 What are you planning on doing today?
-	- Put points here ...
+Submit
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
