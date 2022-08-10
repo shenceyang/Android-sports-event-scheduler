@@ -44,13 +44,13 @@ Figure out which design pattern are we using.
 Any impediments or stumbling blocks?
 Not yet
 
-Name: 
+Name: Mustafa Hasan
 
 What have you done since yesterday?
-	- Put points here ...
+Set up Jira account and invited everyone
 
 What are you planning on doing today?
-	- Put points here ...
+Learn git and github
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None

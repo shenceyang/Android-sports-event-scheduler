@@ -42,13 +42,13 @@ Keep testing and fix bugs
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+Implemented Back button and look into other UI design flaws in app.
 
 What are you planning on doing today?
-	- Put points here ...
+Testing and making UI look prettier.
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Trying to center the text in the actionBar

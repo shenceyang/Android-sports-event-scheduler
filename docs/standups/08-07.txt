@@ -42,13 +42,13 @@ Work with the group to test the project overall
 Any impediments or stumbling blocks?
 Had problems getting the buttons to work but fixed them eventually
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+Added activity bar to all pages.
 
 What are you planning on doing today?
-	- Put points here ...
+Enabling back button for all activity bars.
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+Figuring out how to turn a ToolBar into an actionBar
