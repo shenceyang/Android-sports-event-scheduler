@@ -14,14 +14,49 @@
         android:theme="@style/Theme.B07Project"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+
+            android:name=".Admin_center"
+            android:exported="false" />
+        <activity
+            android:name=".Customer_center"
+            android:exported="false" />
+        <activity
+            android:name=".NewEvent" />
+
+        <activity
+            android:name=".signup_page"
+            android:exported="false" />
+        <activity
+            android:name=".login_page"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ScheduleView"
+            android:exported="false" />
+        <activity
+            android:name=".VenueView"
+            android:exported="false" />
+        <activity
+            android:name=".AdminVenueView"
+            android:exported="false" />
+        <activity
+            android:name=".EventView"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".AddVenue"
+            android:exported="false" />
+        <activity
+            android:name=".AdminUpEvents"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

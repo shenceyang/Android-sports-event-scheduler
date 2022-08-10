@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".login_page">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/ToolbarTheme"
+        app:title="Service Center"
+        app:titleTextColor="#FFFFFF" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bookbtn"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#BF6200EE"
+        android:text="upcoming events" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/schedulebtn"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/addEventbtn"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#BF6200EE"
+        android:text="see my schedule" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addEventbtn"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/bookbtn"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#BF6200EE"
+        android:text="add a event" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/seeVenuebtn"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/schedulebtn"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#BF6200EE"
+        android:text="see venue list" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/quitbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:layout_below="@id/seeVenuebtn"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#A6FF4D4D"
+        android:text="Log Out" />
+
+
+</RelativeLayout>
