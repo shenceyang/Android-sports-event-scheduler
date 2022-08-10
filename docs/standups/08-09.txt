@@ -31,16 +31,16 @@ Finalizing details for submission
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Fixed small problems. Added feature for admin searching for venue with no events
 
 What are you planning on doing today?
-	- Put points here ...
+Discuss with group about any last minute details before submission.
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
