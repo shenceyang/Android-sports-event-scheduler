@@ -20,16 +20,16 @@ Discuss and submit the project
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Max Rack
 
 What have you done since yesterday?
-	- Put points here ...
+Final overview of code
 
 What are you planning on doing today?
-	- Put points here ...
+Submit
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
 
 Name: 
 
