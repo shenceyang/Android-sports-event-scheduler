@@ -42,13 +42,13 @@ Submit
 Any impediments or stumbling blocks?
 None
 
-Name: 
+Name: Keethan Jeyabalan
 
 What have you done since yesterday?
-	- Put points here ...
+Fianl checks for submission
 
 What are you planning on doing today?
-	- Put points here ...
+Submit project
 
 Any impediments or stumbling blocks?
-	- Put points here ...
+None
