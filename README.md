@@ -13,16 +13,53 @@ To develop an Android application, simulating a booking system, that allows admi
 
 ## Screenshots:
 ### Login/Signup
-![](./images/image2.png)
-![](./images/image9.png)
+<tr>
+    <td>
+        <img src="./images/image2.png" width="28%">
+    </td>
+    <td>
+        <img src="./images/image9.png" width="28%">
+    </td>
+</tr>
+
 ### User Actions
-![](./images/image5.png)
-![](./images/image7.png)
-![](./images/image8.png)
-![](./images/image4.png)
-![](./images/image10.png)
+<tr>
+    <td>
+        <img src="./images/image5.png" width="28%">
+    </td>
+    <td>
+        <img src="./images/image7.png" width="28%">
+    </td>
+</tr>
+<tr>
+    <td>
+        <img src="./images/image8.png" width="28%">
+    </td>
+    <td>
+        <img src="./images/image4.png" width="28%">
+    </td>
+</tr>
+<tr>
+    <td>
+        <img src="./images/image10.png" width="28%">
+    </td>
+</tr>
+
+
 ### Admin Actions
-![](./images/image1.png)
-![](./images/image3.png)
-![](./images/image10.png)
-![](./images/image6.png)
+<tr>
+    <td>
+        <img src="./images/image1.png" width="28%">
+    </td>
+    <td>
+        <img src="./images/image3.png" width="28%">
+    </td>
+</tr>
+<tr>
+    <td>
+        <img src="./images/image10.png" width="28%">
+    </td>
+    <td>
+        <img src="./images/image6.png" width="28%">
+    </td>
+</tr>
